@@ -5,10 +5,91 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="/favicon.ico"/>
-    <title>webman</title>
+    <link rel="stylesheet" href=<?php echo "/style.css?".date("h:i:sa"); ?> />
+    <title>transactions</title>
 
 </head>
 <body>
-hello <?=htmlspecialchars($name)?>
+    <section class="side_menu">
+        <h1>Vishualboard</h1>
+        <div class="profile_thumb">
+            <p>Barudak visual</p>
+            <p class="followers">3.09K Followers</p>
+        </div>
+        
+        <div class="link_section">
+            <h1 class="links_head">GENERAL</h1>
+            <div class="links">
+                <a href="" class="active">Dashboard</a>
+                <a href="">Orders</a>
+                <a href="">Products</a>
+                <a href="">Analytics</a>
+                <a href="">Messages</a>
+            </div>
+        </div>
+        <div class="link_section">
+            <h1 class="links_head">HELP & SETTINGS</h1>
+            <div class="links">
+                <a href="">Customer support</a>
+                <a href="">Settings</a>
+            </div>
+        </div>
+        <div class="upgrade">
+            <h1>Upgrade your plan to unlock</h1>
+            <p>You're now using free plan <br> Upgrade plan to continue using  </p>
+            <div class="days_left">
+                <div class="days">
+                    <p>Free plan</p>
+                    <p>4 days left</p>
+                </div>
+                <input type="range" value="50" max="100" />
+                <button>Upgrade now</button>
+            </div>
+        </div>
+    </section>
+    <section class="mid_section">
+        <div class="sales">
+            <div class="sales_search">
+                <p>Good Morning,<br> <span class="name">Fadhilah rizky husaini</span> </p>
+                <img alt="search" src="/search-icon.jpg" />
+            </div>
+            <div class="sales_section_2">
+                <h1>Here's happening in your sales last weeks</h1>
+                <p>$8,567.00 sales profit</p>
+                <p><span>2,478 product are selling</span> and it' increasing from lask tweeks.</p>
+                <button>View report</button>
+            </div>
+            <div class="sales_section_3">
+                <h1>Sales funnel</h1>
+                <div class="funnel">
+                    <div>
+                        <p>All sessions</p>
+                        <p>289.12K <span>8.32%</span></p>
+                        <p>No shopping activity <span>48.5%</span></p>
+                    </div>
+                    <div>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="products">
+            
+        </div>
+    </section>
+    <section class="right_section">
+        <div class="categories">
+
+        </div>
+        <div class="events">
+            
+        </div>
+    </section>
 </body>
 </html>

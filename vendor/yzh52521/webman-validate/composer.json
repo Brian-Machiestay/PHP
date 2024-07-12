@@ -1,0 +1,27 @@
+{
+  "name": "yzh52521/webman-validate",
+  "description": "The webman Validate Package",
+  "license": "mit",
+  "authors": [
+    {
+      "name": "yzh52521",
+      "email": "396751927@qq.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.2.0",
+    "symfony/polyfill-php80": "^1.19",
+    "symfony/translation": "^5.4|^6.0"
+  },
+  "require-dev": {
+    "workerman/webman-framework": "^1.2.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "yzh52521\\validate\\": "src/"
+    },
+    "files": [
+      "src/helper.php"
+    ]
+  }
+}

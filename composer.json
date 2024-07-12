@@ -26,7 +26,28 @@
   "require": {
     "php": ">=7.2",
     "workerman/webman-framework": "^1.5.0",
-    "monolog/monolog": "^2.0"
+    "monolog/monolog": "^2.0",
+    "webman/console": "^1.2",
+    "illuminate/support": "^9.52",
+    "illuminate/hashing": "^9.0",
+    "vlucas/phpdotenv": "^5.5",
+    "phpoption/phpoption": "^1.9",
+    "yzh52521/webman-hash": "^1.0",
+    "yzh52521/easyhttp": "^1.0",
+    "webman/cors": "^1.0",
+    "yzh52521/webman-validate": "^0.1.2",
+    "workerman/validation": "^3.0",
+    "rakit/validation": "^1.4",
+    "illuminate/redis": "^9.52",
+    "symfony/cache": "^7.0",
+    "illuminate/events": "^9.52",
+    "illuminate/database": "^9.52",
+    "webman/redis-queue": "^1.3",
+    "workerman/crontab": "^1.0",
+    "webman/blade": "^1.5",
+    "phpoffice/phpspreadsheet": "^2.1",
+    "maatwebsite/excel": "^1.1",
+    "webman/event": "^1.0"
   },
   "suggest": {
     "ext-event": "For better performance. "

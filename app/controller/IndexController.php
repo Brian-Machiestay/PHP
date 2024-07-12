@@ -4,18 +4,13 @@ namespace app\controller;
 
 use support\Request;
 
+use app\model\Test;
 
 class IndexController
 {
     public function index(Request $request)
     {
-        static $readme;
-        
-        # echo Test::$table;
-        if (!$readme) {
-            $readme = file_get_contents(base_path('README.md'));
-        }
-        return $readme;
+        return view('index/view');
     }
 
     public function view(Request $request)

@@ -1,0 +1,184 @@
+
+
+body {
+      display: flex;
+      justify-content: space-between;
+      height: 100vh;
+      padding: 0;
+      margin: 0;
+      font-family: Roboto, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.side_menu {
+      /*background-color: blue;*/
+      height: 100%;
+      width: 20%;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      padding-left: 15px;
+}
+
+.link_section .links_head {
+      font-size: 10pt;
+      font-weight: lighter;
+}
+
+.profile_thumb {
+      border-radius: 15px;
+      border: 1px solid rgb(220, 218, 218);
+      width: 50%;
+      text-align: left;
+      
+}
+
+.links {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+}
+
+.links a {
+      text-decoration: none;
+      color: black;
+      font-size: 1.2rem;
+}
+.links a.active {
+      background-color: rgb(187, 236, 187);
+      padding: 5px;
+      border-radius: 5px;
+}
+
+.profile_thumb .followers {
+      font-size: 9pt;
+      padding: 0;
+}
+.side_menu .upgrade {
+      margin-top: auto;
+      background: linear-gradient( rgba(231,242,193,1) 0%, rgba(255,255,255,1) 59%);
+      padding: 5px;
+      font-size: 8pt;
+      border-radius: 15px;
+}
+
+.side_menu .upgrade p {
+      text-align: center;
+}
+
+
+.side_menu .upgrade .days_left {
+      display: flex;
+      flex-direction: column;
+      background-color: rgb(125,150,39);;
+      padding: 3px 5px;
+      border-radius: 5px;
+      color: white;
+      font-weight: bold;
+}
+
+.side_menu .upgrade .days_left button {
+      border-radius: 5px;
+      font-weight: bold;
+      outline: none;
+      border: none;
+      padding: 5px;
+}
+
+.side_menu .upgrade .days_left .days {
+      display: flex;
+      justify-content: space-between;
+}
+
+.mid_section {
+      background: rgb(251, 247, 247);
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+}
+
+.mid_section .sales {
+      height: 48%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+}
+
+.mid_section .sales .sales_search {
+      height: 50px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+}
+
+.name {
+      font-weight: bold;
+}
+
+.mid_section .sales .sales_search img {
+      width: 40px;
+      height: 40px;
+      margin-right: 5px;
+      border-radius: 20px;
+}
+
+.mid_section .sales .sales_section_2 {
+      width: 100%;
+      height: 42%;
+      border-radius: 10px;
+      font-size: 11pt;
+      padding-left: 5px;
+      background: linear-gradient(90deg, rgba(3,96,23,1) 0%, rgba(92,224,66,1) 81%);
+}
+
+.mid_section .sales .sales_section_2 button {
+      border-radius: 5px;
+      outline: none;
+      border: none;
+      width: 100px;
+      padding: 5px;
+      margin-bottom: 20px;
+      color: rgb(73, 102, 32);
+      font-weight: bold;
+}
+
+.mid_section .sales .sales_section_3 {
+      background-color: lightpink;
+      height: 42%;
+      width: 100%;
+      border-radius: 5px;
+}
+.mid_section .sales .sales_section_3 h1 {
+      font-size: 12pt;
+}
+
+.right_section {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+}
+
+.right_section .categories {
+      height: 48%;
+      background-color: green;
+}
+
+.right_section .events {
+      height: 48%;
+      background-color: aquamarine;
+}
+
+
+
+
+.mid_section .products {
+      background-color: beige;
+      height: 48%;
+}
+
+
+
+.right_section {
+      background-color: blueviolet;
+      width: 24%;
+}
