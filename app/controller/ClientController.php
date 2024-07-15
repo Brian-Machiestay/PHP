@@ -3,14 +3,17 @@
 namespace app\controller;
 
 use support\Request;
+use app\model\Client;
 
-use app\model\Test;
 
-class IndexController
+class ClientController
 {
-    public function index(Request $request)
+    public function client(Request $request)
     {
-        return view('index/view');
+        $client = new Client(['name' => 'MTN']);
+        $existing_client = Client::where('id', 1)->first();
+        
+        return json(['msg' => 'we are trying this api']);
     }
 
     public function view(Request $request)

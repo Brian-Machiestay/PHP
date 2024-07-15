@@ -14,6 +14,13 @@
 
 use Webman\Route;
 
+Route::group('/auth', function() {
+      Route::post('/client', [app\controller\ClientController::class, 'client']);
+});
+
+
+Route::disableDefaultRoute();
+
 
 
 

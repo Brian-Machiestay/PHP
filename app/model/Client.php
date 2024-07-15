@@ -4,14 +4,14 @@ namespace app\model;
 
 use support\Model;
 
-class Test extends Model
+class Client extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'test';
+    protected $table = 'client';
 
     /**
      * The primary key associated with the table.
@@ -26,4 +26,15 @@ class Test extends Model
      * @var bool
      */
     public $timestamps = false;
+
+    /**
+     * The name of the client
+     */
+    public $name;
+
+    protected $fillable = ['name', 'created_at', 'updated_at'];
+
+    function getUserWithId() {
+        return DB::class
+    }
 }
