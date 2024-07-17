@@ -36,6 +36,10 @@ class Administrator extends Model
         return $this->belongsTo('app\model\User', 'client_id', 'id');
     }
 
+    public function client() {
+        return $this->belongsTo('app\model\Client', 'client_id', 'id');
+    }
+
     static function getAdmin($admin_id) {
         return self::where('id', $admin_id)->first();
     }
@@ -58,5 +62,5 @@ class Administrator extends Model
         $admin->save();
     }
     
-    
+
 }

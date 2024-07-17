@@ -33,6 +33,10 @@ class Preferences extends Model
     public $timestamps = false;
     protected $fillable = ['allowcandidates', 'allowadmins', 'client_id'];
 
+    public function client() {
+        return $this->belongsTo('app\model\Client', 'client_id');
+    }
+    
     static function getClientPreferences($client_id) {
         $preference = Preferences::where('client_id', $client_id)->firstOrFail();
         return $preference;
