@@ -3,6 +3,7 @@
 namespace app\model;
 
 use support\Model;
+use Illuminate\Hashing\BcryptHasher;
 
 /**
  *
@@ -46,6 +47,10 @@ class User extends Model
 
     public function voters() {
         return $this->hasOne(Voter::class, 'id', 'voter_id');
+    }
+
+    public static function getUserWithEmaill($email) {
+        return self::where('email', $email)->first();
     }
     
 }

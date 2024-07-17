@@ -14,7 +14,12 @@
 
 use Webman\Route;
 
-Route::post('/client', [app\controller\ClientController::class, 'client']);
+Route::group('/api/v1', function() {
+      Route::group('/auth', function() {
+            Route::post('/client', [app\controller\ClientController::class, 'client']);
+      });
+});
+
 Route::group('/{client_id}', function () {
       Route::put('/preferences', [app\controller\PreferencesController::class, 'updatePreferences']);
       Route::get('/preferences', [app\controller\PreferencesController::class, 'retrieveClientPreferences']);
