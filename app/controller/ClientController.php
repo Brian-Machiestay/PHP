@@ -4,26 +4,29 @@ namespace app\controller;
 
 use support\Request;
 use app\model\Client;
-
+use app\model\Preferences;
+use support\Response;
 
 class ClientController
 {
     public function client(Request $request)
     {
-        $client = new Client(['name' => 'MTN']);
-        $existing_client = Client::where('id', 1)->first();
-        
-        return json(['msg' => 'we are trying this api']);
+        $name = $request->post('name');
+        if ($name == null) return Response('name field cannot be empty', 400);
+        $client = Client::getClientWithName($name);
+        if ($client != null) {
+            return Response('name already exists', 400);
+        }
+        $client = new Client(['name' => $name]);
+        $client->save();
+        $preference = new Preferences(['allowcandidates' => false, 'allowadmins' => false, 'client_id' => $client->id]);
+        $preference->save();
+        return json($client);
     }
 
-    public function view(Request $request)
-    {
-        return view('index/view', ['name' => 'webman']);
-    }
-
-    public function json(Request $request)
-    {
-        return json(['code' => 0, 'msg' => 'ok']);
+    public function clients(Request $resquest) {
+        $allClients = Client::getAllClients();
+        return json($allClients);
     }
 
 }
