@@ -25,6 +25,9 @@ Route::group('/api/v1', function() {
             Route::get('/preferences', [app\controller\PreferencesController::class, 'retrieveClientPreferences']);
             Route::post('/admin', [app\controller\AdminController::class, 'addAdmin']);
             Route::get('/admins', [app\controller\AdminController::class, 'getAdmins']);
+            Route::post('/candidate', [app\controller\CandidateController::class, 'addCandidate']);
+            Route::post('/portfolio', [app\controller\PortfolioController::class, 'addPortfolio']);
+            Route::get('/portfolios', [app\controller\PortfolioController::class, 'retrievePortfolio']);
       });
 
       Route::group('/admin', function() {

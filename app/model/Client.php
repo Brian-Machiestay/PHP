@@ -40,11 +40,11 @@ class Client extends Model
     }
 
     public function portfolios() {
-        return $this->hasMany('app\model\Portfolio');
+        return $this->hasMany('app\model\Portfolio', 'client_id', 'id');
     }
 
     public function candidates() {
-        return $this->hasMany('app\model\Candidate', 'candidate_id', 'id');
+        return $this->hasMany('app\model\Candidate', 'client_id', 'id');
     }
 
     public function administrators(){
