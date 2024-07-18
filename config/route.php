@@ -18,14 +18,22 @@ Route::group('/api/v1', function() {
       Route::group('/auth', function() {
             Route::post('/client', [app\controller\ClientController::class, 'client']);
       });
+
+      Route::group('', function() {
+            Route::get('/client', [app\controller\ClientController::class, 'oneClient']);
+            Route::put('/preferences', [app\controller\PreferencesController::class, 'updatePreferences']);
+            Route::get('/preferences', [app\controller\PreferencesController::class, 'retrieveClientPreferences']);
+            Route::post('/admin', [app\controller\AdminController::class, 'addAdmin']);
+            Route::get('/admins', [app\controller\AdminController::class, 'getAdmins']);
+      });
+
+      Route::group('/admin', function() {
+            Route::get('/clients', [app\controller\ClientController::class, 'clients']);
+      });
 });
 
 Route::group('/{client_id}', function () {
       Route::put('/preferences', [app\controller\PreferencesController::class, 'updatePreferences']);
-      Route::get('/preferences', [app\controller\PreferencesController::class, 'retrieveClientPreferences']);
-});
-Route::group('/admin', function () {
-      Route::get('/clients', [app\controller\ClientController::class, 'clients']);
 });
 
 

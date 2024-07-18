@@ -33,11 +33,7 @@ class Client extends Model
      */
     public $name;
 
-    protected $fillable = ['name', 'approved'];
-
-    public function user() {
-        return $this->belongsTo(User::class, 'id', 'client_id');
-    }
+    protected $fillable = ['approved'];
 
     public function preferences() {
         return $this->hasOne('app\model\Preferences');
@@ -52,22 +48,18 @@ class Client extends Model
     }
 
     public function administrators(){
-        return $this->hasMany('app\model\Administrator');
+        return $this->hasMany('app\model\Administrator', 'client_id', 'id');
     }
 
     public function voters() {
         return $this->hasMany('app\model\Voter');
     }
 
-    static function getClientWithName($name) {
-        return Db::table('client')->where('name', $name)->first();
-    }
-
     static function getClientWithId($id) {
-        return Db::table('client')->where('id', $id)->first();
+        return Client::where('id', $id)->first();
     }
 
     static function getAllClients() {
-        return Db::table('client')->get();
+        return Client::all()->toArray();
     }
 }

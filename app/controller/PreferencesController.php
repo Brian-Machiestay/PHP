@@ -10,8 +10,9 @@ use app\model\Preferences;
 
 class PreferencesController
 {
-    public function updatePreferences(Request $request, $id )
+    public function updatePreferences(Request $request)
     {
+        $id = $request->get('id');
         $client = Client::getClientWithId($id);
         if ($client == null) {
             return Response('client does not exist', 400);
@@ -35,8 +36,11 @@ class PreferencesController
         return json($preferences);
     }
 
-    public function retrieveClientPreferences(Request $request, $client_id) {
-        return json(Preferences::getClientPreferences($client_id));
+    public function retrieveClientPreferences(Request $request) {
+        $id = $request->get('id');
+        $client = Client::getClientWithId($id);
+        if ($client == null) return Response('client does not exist', 400);
+        return json(Preferences::getClientPreferences($id));
     }
 
 }

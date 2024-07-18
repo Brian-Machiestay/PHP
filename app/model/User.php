@@ -31,7 +31,7 @@ class User extends Model
      */
     public $timestamps = false;
 
-    protected $fillable = ['email', 'password', 'client_id', 'candidate_id', 'administrator_id', 'voter_id'];
+    protected $fillable = ['email', 'password', 'name', 'client_id', 'candidate_id', 'administrator_id', 'voter_id'];
     
     public function client() {
         return $this->hasOne(Client::class, 'id', 'client_id');
@@ -49,8 +49,11 @@ class User extends Model
         return $this->hasOne(Voter::class, 'id', 'voter_id');
     }
 
-    public static function getUserWithEmaill($email) {
+    public static function getUserWithEmail($email) {
         return self::where('email', $email)->first();
     }
     
+    public static function getUsersWithName($name) {
+        return self::where('name', $name)->get();
+    }
 }

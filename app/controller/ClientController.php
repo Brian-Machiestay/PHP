@@ -29,17 +29,19 @@ class ClientController
             if ($val == null) return Response('some fields are missing', 400);
         }
 
-        $usr = User::getUserWithEmaill($data['email']);
+        $usr = User::getUserWithEmail($data['email']);
         if ($usr != null) return Response('email already exists', 400);
 
-        $client = Client::getClientWithName($data['name']);
-        if ($client != null) return Response('name already exists', 400);
-
+        $usersWithName = User::getUsersWithName($data['name']);
+        foreach($usersWithName as $thisUser) {
+            if ($thisUser->client() != null) return Response('Name already exists', 400); 
+        }
+       
         DB::beginTransaction();
         try {
-            $client = new Client(['name' => $data['name'], 'approved' => false]);
+            $client = new Client(['approved' => false]);
             $client->save();
-            $usr = new User(['client_d' => $client->id, 'email' => $data['email'], 'password' => $data['password']]);
+            $usr = new User(['client_id' => $client->id, 'email' => $data['email'], 'password' => $data['password'], 'name' => $data['name']]);
             $usr->save();
             $preference = new Preferences(['allowcandidates' => false, 'allowadmins' => false, 'client_id' => $client->id]);
             $preference->save();
@@ -57,6 +59,13 @@ class ClientController
     public function clients(Request $resquest) {
         $allClients = Client::getAllClients();
         return json($allClients);
+    }
+
+    public function oneClient(Request $request) {
+        $id = $request->get('id');
+        $client = Client::getClientWithId($id);
+        if ($client == null) return Response('Client does not exist', 400);
+        return json($client);
     }
 
 }
