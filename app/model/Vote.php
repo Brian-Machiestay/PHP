@@ -29,6 +29,8 @@ class Vote extends Model
      * @var bool
      */
     public $timestamps = false;
+
+    protected $fillable = ['candidate_id', 'voter_id', 'portfolio_id'];
     
     public function candidate() {
         return $this->belongsTo('app\model\Candidate', 'candidate_id');

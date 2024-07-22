@@ -7,7 +7,7 @@ use support\Db;
 use app\model\Administrator;
 use app\model\Client;
 use app\model\User;
-use PhpOffice\PhpSpreadsheet\Calculation\MathTrig\Exp;
+use Exception;
 
 class AdminController
 {
@@ -34,7 +34,7 @@ class AdminController
             $admin->save();
             $usr->save();
             DB::commit();
-        } catch(Exp $e) {
+        } catch(Exception $e) {
             DB::rollBack();
             echo $e;
         }

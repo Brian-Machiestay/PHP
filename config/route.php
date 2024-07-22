@@ -26,9 +26,15 @@ Route::group('/api/v1', function() {
             Route::post('/admin', [app\controller\AdminController::class, 'addAdmin']);
             Route::get('/admins', [app\controller\AdminController::class, 'getAdmins']);
             Route::post('/candidate', [app\controller\CandidateController::class, 'addCandidate']);
+            Route::get('/candidates', [app\controller\CandidateController::class, 'retrieveCandidates']);
             Route::post('/portfolio', [app\controller\PortfolioController::class, 'addPortfolio']);
             Route::get('/portfolios', [app\controller\PortfolioController::class, 'retrievePortfolio']);
+            Route::post('/voter', [app\controller\VoterController::class, 'addVoter']);
+            Route::get('/voters', [app\controller\VoterController::class, 'retrieveVoters']);
+            Route::post('/{id}/vote', [app\controller\VoteController::class, 'vote']);
+            Route::put('/publish', [app\controller\ClientController::class, 'publish']);
       });
+
 
       Route::group('/admin', function() {
             Route::get('/clients', [app\controller\ClientController::class, 'clients']);

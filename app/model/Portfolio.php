@@ -39,6 +39,10 @@ class Portfolio extends Model
         return $this->belongsTo('app\model\Candidate', 'candidate_id', 'id');
     }
 
+    public function votes() {
+        return $this->hasMany(Vote::class, 'portfolio_id', 'id');
+    }
+
     public static function getPortfolio(Client $client, string $id) {
         return $client->portfolios()->where('id', $id)->first();
     }

@@ -31,10 +31,10 @@ class Voter extends Model
      */
     public $timestamps = false;
     
-    protected $fillable = ['client_id', 'admin_id', 'candidate_id'];
+    protected $fillable = ['client_id', 'candidate_id'];
     
     public function client() {
-        return $this->belongsTo(Client::class, 'client_id');
+        return $this->belongsTo(Client::class, 'client_id', 'id');
     }
 
     public function admin() {
@@ -43,5 +43,9 @@ class Voter extends Model
 
     public function candidate() {
         return $this->belongsTo(Candidate::class, 'candidate_id');
+    }
+
+    public static function getVoterWithId(string $id) : Voter {  
+        return self::where('id', $id)->first();
     }
 }

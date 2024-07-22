@@ -52,7 +52,7 @@ class Client extends Model
     }
 
     public function voters() {
-        return $this->hasMany('app\model\Voter');
+        return $this->hasMany('app\model\Voter', 'client_id', 'id');
     }
 
     static function getClientWithId($id) {

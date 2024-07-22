@@ -31,7 +31,7 @@ class Preferences extends Model
      * @var bool
      */
     public $timestamps = false;
-    protected $fillable = ['allowcandidates', 'allowadmins', 'client_id'];
+    protected $fillable = ['allowcandidates', 'allowadmins', 'client_id', 'publish'];
 
     public function client() {
         return $this->belongsTo('app\model\Client', 'client_id');

@@ -1,11 +1,10 @@
 <?php
 
 namespace app\controller;
-
-use PhpOffice\PhpSpreadsheet\Calculation\MathTrig\Exp;
 use support\Request;
 use support\Db;
 use app\model\Client;
+use Exception;
 
 class PortfolioController
 {
@@ -23,7 +22,7 @@ class PortfolioController
         try {
             $portfolio = $client->portfolios()->create(['category' => $category]);
             return json(['portfolio_id' => $portfolio->id]);
-        } catch (Exp $e) {
+        } catch (Exception $e) {
             return Response('could not add portfolio, an error occurred', 500);
         }
     }

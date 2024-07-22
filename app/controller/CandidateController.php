@@ -5,9 +5,9 @@ namespace app\controller;
 use app\model\Client;
 use app\model\Portfolio;
 use app\model\User;
+use Exception;
 use support\Request;
 use support\Db;
-use PhpOffice\PhpSpreadsheet\Calculation\MathTrig\Exp;
 use support\Response;
 
 class CandidateController
@@ -21,10 +21,12 @@ class CandidateController
             'name' => $request->post('name'),
             'email' => $request->post('email')
         ];
-
+        echo json($data);
         foreach ($data as $dt) if ($dt == null) return Response('some of the fields are empty', 400);
         $pp = Portfolio::getPortfolio($client, $data['portfolio_id']);
         if ($pp == null) return Response('portfolio does not exist', 400);
+        $user = User::getUserWithEmail($data['email']);
+        if ($user != null) return  Response('account already exists');
         DB::beginTransaction();
         try {
             $candidate = $client->candidates()->create(['portfolio_id' => $data['portfolio_id']]);
@@ -33,11 +35,19 @@ class CandidateController
             $usr->save();
             DB::commit();
             return json(['candidate_id' => $candidate->id]);
-        } catch (Exp $e) {
+        } catch (Exception $e) {
             echo $e;
-            return Response('Could not create candidate, an error occurred', 400);
+            DB::rollBack();
+            return Response('Could not create candidate, an error occurred', 500);
         }
         return json([]);
+    }
+
+    public static function retrieveCandidates(Request $request) {
+        $id = $request->get('id');
+        $client = Client::getClientWithId($id);
+        $candidates = $client->candidates;
+        return json($candidates);
     }
 
 }

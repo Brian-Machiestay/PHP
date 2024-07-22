@@ -30,8 +30,12 @@ class Candidate extends Model
      */
     public $timestamps = false;
 
-    protected $fillable = ['client_id', 'name', 'portoflio_id', 'client_id'];
+    protected $fillable = ['client_id', 'portfolio_id'];
     
+    public function client() {
+        return $this->belongsTo(Client::class, 'client_id', 'id');
+    }
+
     public function portfolio() {
         return $this->hasOne('app\model\Portfolio', 'id');
     }
@@ -42,5 +46,9 @@ class Candidate extends Model
 
     public function votes() {
         return $this->hasMany(Vote::class, 'candidate_id', 'id');
+    }
+
+    public static function getCandidate(Client $client, String $id) {
+        return $client->candidates::where('id', $id)->first();
     }
 }

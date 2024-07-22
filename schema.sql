@@ -1,25 +1,7 @@
 CREATE TABLE IF NOT EXISTS clients (
     id SERIAL PRIMARY KEY,       
-    approved BOOLEAN NOT NULL
-);
-
-CREATE TABLE IF NOT EXISTS candidates (
-    id SERIAL PRIMARY KEY,       
-    approved BOOLEAN NOT NULL,  
-    name VARCHAR(255) NOT NULL,
-    client_id BIGINT NOT NULL,
-    CONSTRAINT fk_parent
-        FOREIGN KEY(client_id) 
-        REFERENCES clients(id)
-);
-
-CREATE TABLE IF NOT EXISTS administrators (
-    id SERIAL PRIMARY KEY,       
-    level VARCHAR(255) NOT NULL,
-    client_id BIGINT NOT NULL,
-    CONSTRAINT fk_parent
-        FOREIGN KEY(client_id) 
-        REFERENCES clients(id)
+    approved BOOLEAN NOT NULL,
+    publish BOOLEAN NOT NULL DEFAULT false
 );
 
 CREATE TABLE IF NOT EXISTS portfolios (
@@ -31,21 +13,33 @@ CREATE TABLE IF NOT EXISTS portfolios (
         REFERENCES clients(id)
 );
 
-CREATE TABLE IF NOT EXISTS voters (
-    id SERIAL PRIMARY KEY,     
-    category VARCHAR(255) NOT NULL,
+CREATE TABLE IF NOT EXISTS candidates (
+    id SERIAL PRIMARY KEY,
     client_id BIGINT NOT NULL,
-    admin_id BIGINT,
-    candidate_id BIGINT,
+    portfolio_id BIGINT NOT NULL,
+    CONSTRAINT fk_parent
+        FOREIGN KEY(client_id) 
+        REFERENCES clients(id),
+    CONSTRAINT fk_portfolio
+        FOREIGN KEY(portfolio_id) 
+        REFERENCES portfolios(id)
+);
+
+CREATE TABLE IF NOT EXISTS administrators (
+    id SERIAL PRIMARY KEY,       
+    level VARCHAR(255) NOT NULL,
+    client_id BIGINT NOT NULL,
+    CONSTRAINT fk_parent
+        FOREIGN KEY(client_id) 
+        REFERENCES clients(id)
+);
+
+CREATE TABLE IF NOT EXISTS voters (
+    id SERIAL PRIMARY KEY,
+    client_id BIGINT,
     CONSTRAINT fk_client
         FOREIGN KEY(client_id) 
         REFERENCES clients(id),
-      CONSTRAINT fk_admin
-        FOREIGN KEY(admin_id)
-        REFERENCES administrators(id),
-      CONSTRAINT fk_candidate
-        FOREIGN KEY(candidate_id)
-        REFERENCES candidates(id)
 );
 
 CREATE TABLE IF NOT EXISTS votes (
@@ -65,6 +59,7 @@ CREATE TABLE IF NOT EXISTS preferences (
     id SERIAL PRIMARY KEY,       
     allowAdmins BOOLEAN NOT NULL,
     allowCandidates BOOLEAN NOT NULL,
+    publish BOOLEAN DEFAULT true,
     client_id BIGINT NOT NULL,
     CONSTRAINT fk_client
         FOREIGN KEY(client_id) 
