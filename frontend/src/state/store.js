@@ -3,13 +3,15 @@ import authSlice from "./slices/authSlice";
 import eventSlice from "./slices/eventSlice";
 import taskSlice from "./slices/taskSlice";
 import alertSlice from "./slices/alertSlice";
+import votingSlice from "./slices/votingSlice";
 
 const store = configureStore({
   reducer: {
     auth: authSlice,
     event: eventSlice,
     task: taskSlice,
-    alert: alertSlice
+    alert: alertSlice,
+    vote: votingSlice
   },
 });
 
