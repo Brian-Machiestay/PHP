@@ -1,0 +1,38 @@
+@use '../screen';
+
+.container {
+    display: flex;
+    align-items: center;
+    padding-bottom: 5px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgb(223, 222, 222);
+
+    button {
+        margin-left: auto;
+    }
+
+    img {
+        padding: 3px;
+        margin-right: 10px;
+
+        &[alt="logo"] {
+            width: 50px;
+        }
+
+        &[alt="notifications"] {
+            cursor: pointer;
+            margin-left: 10px;
+        }
+    }
+
+    p {
+        font-weight: bold;
+    }
+}
+
+@media (max-width: screen.$mobile-break_point) {
+    .container {
+        display: none;
+    }
+}

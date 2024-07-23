@@ -1,0 +1,27 @@
+@use '../colors';
+
+.container {
+    display: flex;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid colors.$border-color;
+    width: 250px;
+
+    input {
+        border: none;
+        height: 90%;
+        width: 75%;
+        border-radius: 10px;
+        background-color: colors.$general-bg-color;
+        outline: none;
+        font-size: 14pt;
+
+        &:focus {
+            background-color: colors.$general-bg-color;
+        }
+    }
+
+    img {
+        padding: 10px;
+    }
+}

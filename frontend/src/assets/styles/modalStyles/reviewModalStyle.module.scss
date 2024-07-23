@@ -1,0 +1,62 @@
+@use '../colors';
+
+
+.container {
+
+}
+
+.title {
+    font-weight: 500;
+    font-size: 16pt;
+    margin-left: 30%;
+}
+
+.modalBody {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    .stars {
+        display: flex;
+
+        p {
+            display: flex;
+            flex-direction: column;
+            margin-right: 10px;
+            width: 60px;
+            align-items: center;
+
+            .star {
+                font-size: 24pt;
+                cursor: pointer;
+            }
+
+            .chosen {
+                color: colors.$brand-color;
+            }
+        }
+    }
+
+    p.reviewHead, p.rateHead {
+        font-size: 13pt;
+        font-weight: 500;
+    }
+
+    textarea {
+        border-radius: 5px;
+        border: 1px solid rgb(175, 173, 173);
+        outline: none;
+        height: 100px;
+        resize: none;
+    }
+
+    .submitReview {
+        border-radius: 10px;
+        height: 40px;
+        background-color: colors.$brand-color;
+        color: white;
+        margin: 10px 0;
+        border: none;
+    }
+}
+

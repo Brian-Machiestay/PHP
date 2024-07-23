@@ -1,0 +1,32 @@
+@use '../colors';
+
+.modalBody {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    p {
+        text-align: center;
+    }
+
+    button {
+        width: 50%;
+        color: white;
+        height: 30px;
+        align-self: center;
+        border-radius: 10px;
+        background-color: colors.$brand-color;
+        outline: none;
+        border: none;
+        margin: 10px 0;
+
+        &:hover, &:focus {
+            background-color: colors.$brand-color-light;
+            outline: none;
+        }
+        &:active {
+            background-color: colors.$brand-color;
+        }
+    }
+}

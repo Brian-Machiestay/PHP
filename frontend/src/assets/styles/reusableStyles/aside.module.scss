@@ -1,0 +1,14 @@
+@use '../screen';
+
+.container {
+    background-color: white;
+    margin-bottom: 5px;
+    width: 100%;
+    height: 20px;
+
+    @media (max-width: screen.$mobile-break_point) {
+        & {
+            display: none;
+        }
+    }
+}

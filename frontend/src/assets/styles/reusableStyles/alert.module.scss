@@ -1,0 +1,23 @@
+@use '../screen';
+
+.container {
+    color: white;
+    position: absolute;
+    top: 0;
+    border-bottom: 5px solid black;
+    margin-top: 50px;
+    //margin-right: 20px;
+    left: 40%;
+    width: 50%;
+
+    .msg {
+        color: white;
+    }
+
+    @media (max-width: screen.$mobile-break_point) {
+        & {
+            width: 90%;
+            left: 5%;
+        }
+    }
+} 

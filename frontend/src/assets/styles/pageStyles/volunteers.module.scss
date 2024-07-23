@@ -1,0 +1,21 @@
+@use '../screen';
+
+.container {
+    width: 100%;
+    padding-right: 20px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    h2 {
+        font-size: 16pt;
+        font-weight: 600;
+        margin-left: 20px;
+        margin-bottom: 20px;
+    }
+
+    @media (max-width: screen.$mobile-break_point) {
+        & {
+            padding-right: 0;
+        }
+    }
+}

@@ -1,0 +1,28 @@
+@use '../_colors';
+
+.container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 10%;
+      gap: 100px;
+      h1 {
+            font-size: 20pt;
+            text-align: center;
+            
+      }
+
+      img {
+            width: 50%;
+      }
+
+      button {
+            outline: none;
+            border: none;
+            background-color: colors.$brand-color;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+      }
+}

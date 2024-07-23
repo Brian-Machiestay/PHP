@@ -1,0 +1,145 @@
+@use './colors';
+@use './screen';
+
+
+.container {
+    background-color: white;
+    padding: 10px 2%;
+    margin-left: 20px;
+    border-radius: 10px;
+    width: 98%;
+    margin-right: 20px;
+
+    &.details_div {
+        display: flex;
+
+        .volunteers {
+            width: 60%;
+
+            .other_sections {
+                width: 100%;
+
+                .section2 {
+                    width: 100%;
+
+                    p {
+                        width: 25%;
+                    }
+
+                    p.status {
+                        width: 12%;
+                    }
+                }
+            }
+        }
+
+        .details {
+            margin-left: auto;
+        }
+    }
+    
+    .section1, .section2 {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .section1 {
+        margin-bottom: 20px;
+
+        p {
+            font-size: 14pt;
+            font-weight: 600;
+        }
+
+        button {
+            border: 1px solid colors.$brand-color;
+            background-color: white;
+            color: colors.$brand-color;
+            padding: 5px;
+            border-radius: 5px;
+
+            &:hover {
+                background-color: colors.$brand-color;
+                color: white;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .section2 {
+        border-bottom: 1px solid black;
+        padding-bottom: 8px;
+        width: 100%;
+        font-weight: 500;
+
+        p {
+            display: flex;
+            align-items: center;
+            width: 15%;
+            margin-right: 2px;
+            img {
+                width: 15px;
+                margin-right: 4px;
+            }
+
+        }
+
+        .title {
+            width: 20%;
+        }
+    }
+
+    .volunteer {
+        width: 70%;
+
+        p {
+            width: 20%;
+        }
+    }
+
+    .details {
+        width: 35%;
+    }
+
+    @media (max-width: screen.$mobile-break_point) {
+        & {
+            width: 93%;
+            margin-left: 15px;
+
+            .other_sections {
+                overflow-x: scroll;
+                padding-right: 0px;
+
+                .section2 {
+                    width: 800px;
+                }
+            }
+            &.details_div {
+                display: flex;
+                flex-direction: column;
+        
+                .volunteers {
+                    width: 100%;
+                    overflow-x: auto;
+        
+                    .other_sections {
+                        width: 100%;
+                        overflow-x: scroll;
+        
+                        .section2, .volunteer {
+                            width: 800px;
+                            p {
+                                width: 25%;
+                            }
+                        }
+                    }
+                }
+
+                .details {
+                    width: 100%;
+                    margin-top: 20px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,74 @@
+@use './colors';
+@use './screen';
+
+$border_radius: 10px;
+$font_size: 14pt;
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 20px;
+    margin-bottom: 20px;
+
+    input, select {
+        border-radius: 10px;
+        outline: none;
+        border: 1px solid colors.$border-color;
+        width: 200px;
+        height: 40px;
+        background-color: colors.$general-bg-color;
+        font-size: $font_size;
+    }
+
+    .volunteer_search {
+        border: 1px solid colors.$border-color;
+        border-radius: 10px;
+        display: flex;
+
+        input {
+            border: none;
+        }
+
+        img {
+            width: 30px;
+        }
+    }
+
+    .search {
+        width: 150px;
+        height: 30px;
+        align-self: center;
+        border-radius: $border_radius;
+        outline: none;
+        border: none;
+        background-color: colors.$brand-color;
+        color: white;
+        cursor: pointer;
+    }
+    @media (max-width: screen.$mobile-break_point) {
+        & {
+            flex-wrap: wrap;
+            width: 90%;
+
+            input, select, .volunteer_search {
+                min-width: 20px;
+                width: 30%;
+                justify-content: space-around;
+                font-size: 12pt;
+            }
+            .search {
+                margin: 10px auto;
+            }
+            .volunteer_search {
+                img {
+                    width: 25px;
+                    margin: 0;
+                    padding: 2px;
+                }
+                input {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

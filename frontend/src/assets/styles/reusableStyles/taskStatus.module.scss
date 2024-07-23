@@ -1,0 +1,53 @@
+@use '../colors';
+@use '../screen';
+
+.container {
+    display: flex;
+    background-color: white;
+    width: 300px;
+    height: 80px;
+    border-radius: 2px;
+    margin-left: 20px;
+    justify-content: center;
+
+    img {
+        width: 40px;
+        margin-right: 10px;
+    }
+    
+    .count {
+        margin-top: auto;
+        margin-bottom: 10px;
+        text-align: center;
+        font-weight: bold;
+        font-size: 14pt;
+    }
+
+    .unassigned, .completed, .progress {
+        display: flex;
+        flex-direction: column;
+
+        .title {
+            margin-top: 20px;
+        }
+    }
+
+    .unassigned {
+        color: colors.$brand-color;
+    }
+
+    .completed {
+        color: #28EF30;
+    }
+
+    .progress {
+        color: blue;
+    }
+}
+
+@media (max-width:  screen.$mobile-break_point) {
+    .container {
+        margin-bottom: 10px;
+        width: 90%;
+    }
+}

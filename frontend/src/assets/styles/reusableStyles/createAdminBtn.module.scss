@@ -1,0 +1,23 @@
+@use '../colors';
+
+.container {
+    background-color: colors.$general-bg-color;
+    width: 250px;
+    height: 40px;
+    border-radius: 10px;
+    outline: none;
+    border: 1px solid colors.$brand-color;
+    color: colors.$brand-color;
+    cursor: pointer;
+
+    &:hover {
+        background-color: colors.$brand-color;
+        color: white;
+    }
+
+    @media (max-width: 480px) {
+        & {
+            width: 100%;
+        }
+    }
+}

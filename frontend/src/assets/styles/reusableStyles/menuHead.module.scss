@@ -1,0 +1,22 @@
+@use '../screen';
+
+.container {
+    display: none;
+    width: 100%;
+
+    @media (max-width: screen.$mobile-break_point) {
+        & {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            margin: 0 auto;
+            height: 50px;
+        }
+
+        .menu {
+            margin-left: 20px;
+        }
+    }
+}

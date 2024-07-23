@@ -1,0 +1,70 @@
+@use '../screen';
+
+.container {
+    width: 100%;
+    padding-right: 2%;
+    //margin-right: 20px;
+    overflow-y: scroll;
+
+    @media (max-width: screen.$mobile-break_point) {
+        & {
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+}
+
+.section1 {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+    margin-bottom: 20px;
+
+    button {
+        margin-left: auto;
+    }
+
+    img {
+        padding: 3px;
+        margin-right: 10px;
+
+        &[alt="logo"] {
+            width: 50px;
+        }
+
+        &[alt="notifications"] {
+            cursor: pointer;
+            margin-left: 10px;
+        }
+    }
+
+    p {
+        font-weight: bold;
+    }
+
+    @media (max-width: screen.$mobile-break_point) {
+        & {
+            margin: 0;
+        }
+    }
+}
+
+.section2 {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+
+.section3 {
+
+    h2 {
+        font-size: 16pt;
+        font-weight: 600;
+        margin: 15px 0;
+        margin-left: 20px;
+    }
+}

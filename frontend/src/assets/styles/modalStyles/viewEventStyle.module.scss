@@ -1,0 +1,54 @@
+@use '../colors';
+@use '../screen';
+
+.eventContainer {
+    cursor: auto;
+}
+
+.description, .location {
+    margin: 20px 10px;
+}
+
+.location {
+    font-weight: bold;
+}
+
+.link {
+    font-weight: normal;
+}
+
+.register {
+    display: flex;
+    gap: 20px;
+    margin: 10px 25px;
+
+    button {
+        border: 1px solid rgb(187, 186, 186);
+        border-radius: 5px;
+        padding: 5px;
+        background-color: white;
+
+        &:active, &:hover {
+            background-color: colors.$brand-color;
+            border-color: colors.$brand-color;
+            color: white;
+        }
+    }
+
+    .calendar {
+        margin-left: auto;
+        border: none;
+        color: colors.$brand-color;
+    }
+}
+@media (max-width: screen.$mobile-break_point) {
+    .register {
+        button {
+            font-size: 8pt;
+        }
+    }
+
+    .modalBody {
+        padding: 3px;
+    }
+}
