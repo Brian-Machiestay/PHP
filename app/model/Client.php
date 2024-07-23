@@ -47,6 +47,10 @@ class Client extends Model
         return $this->hasMany('app\model\Candidate', 'client_id', 'id');
     }
 
+    public function user() {
+        return $this->hasOne('app\model\User', 'client_id', 'id');
+    }
+
     public function administrators(){
         return $this->hasMany('app\model\Administrator', 'client_id', 'id');
     }

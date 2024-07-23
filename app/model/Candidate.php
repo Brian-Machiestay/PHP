@@ -37,11 +37,11 @@ class Candidate extends Model
     }
 
     public function portfolio() {
-        return $this->hasOne('app\model\Portfolio', 'id');
+        return $this->belongsTo('app\model\Portfolio', 'portfolio_id', 'id');
     }
 
     public function user() {
-        return $this->belongsTo(User::class, 'candidate_id', 'id');
+        return $this->hasOne(User::class, 'candidate_id', 'id');
     }
 
     public function votes() {
@@ -49,6 +49,6 @@ class Candidate extends Model
     }
 
     public static function getCandidate(Client $client, String $id) {
-        return $client->candidates::where('id', $id)->first();
+        return $client->candidates->where('id', $id)->first();
     }
 }

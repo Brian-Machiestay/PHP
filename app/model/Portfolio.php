@@ -35,8 +35,8 @@ class Portfolio extends Model
         return $this->belongsTo('app\model\Client', 'client_id', 'id');
     }
 
-    public function candidate() {
-        return $this->belongsTo('app\model\Candidate', 'candidate_id', 'id');
+    public function candidates() {
+        return $this->hasMany('app\model\Candidate', 'portfolio_id', 'id');
     }
 
     public function votes() {

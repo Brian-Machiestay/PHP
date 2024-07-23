@@ -33,6 +33,7 @@ Route::group('/api/v1', function() {
             Route::get('/voters', [app\controller\VoterController::class, 'retrieveVoters']);
             Route::post('/{id}/vote', [app\controller\VoteController::class, 'vote']);
             Route::put('/publish', [app\controller\ClientController::class, 'publish']);
+            Route::get('/results', [app\controller\VoteController::class, 'results']);
       });
 
 

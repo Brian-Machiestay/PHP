@@ -45,8 +45,8 @@ CREATE TABLE IF NOT EXISTS voters (
 CREATE TABLE IF NOT EXISTS votes (
     id SERIAL PRIMARY KEY,
     portfolio_id BIGINT NOT NULL,
-    voter_id BIGINT,
-    candidate_id BIGINT,
+    voter_id BIGINT NOT NULL,
+    candidate_id BIGINT NOT NULL,
       CONSTRAINT fk_voters
         FOREIGN KEY(voter_id)
         REFERENCES voters(id),

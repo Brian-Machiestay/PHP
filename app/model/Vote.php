@@ -35,5 +35,18 @@ class Vote extends Model
     public function candidate() {
         return $this->belongsTo('app\model\Candidate', 'candidate_id');
     }
+
+    /**
+     * check if this voter has already voted
+     */
+    public static function voted(Voter $voter, Portfolio $portfolio) : bool {
+        $vote = self::where('voter_id', $voter->id)->where('portfolio_id', $portfolio->id)->first();
+        if ($vote == null) return false;
+        return true;
+    }
+
+    public static function voteCount(Candidate $candidate, Portfolio $portfolio) {
+        return self::where('candidate_id', $candidate->id)->where('portfolio_id', $portfolio->id)->count();
+    }
     
 }

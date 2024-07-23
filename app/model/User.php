@@ -34,19 +34,19 @@ class User extends Model
     protected $fillable = ['email', 'password', 'name', 'client_id', 'candidate_id', 'administrator_id', 'voter_id'];
     
     public function client() {
-        return $this->hasOne(Client::class, 'id', 'client_id');
+        return $this->belongsTo(Client::class, 'client_id', 'id');
     }
 
-    public function admins() {
-        return $this->hasOne(Administrator::class, 'id', 'administrator_id');
+    public function admin() {
+        return $this->belongsTo(Administrator::class, 'client_id', 'id');
     }
 
-    public function candidates() {
-        return $this->hasOne(Candidate::class, 'id', 'candidate_id');
+    public function candidate() {
+        return $this->belongsTo(Candidate::class, 'client_id', 'id');
     }
 
-    public function voters() {
-        return $this->hasOne(Voter::class, 'id', 'voter_id');
+    public function voter() {
+        return $this->belongsTo(Voter::class, 'voter_id', 'id');
     }
 
     public static function getUserWithEmail($email) {
