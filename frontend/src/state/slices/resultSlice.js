@@ -4,8 +4,8 @@ import Axios from "../../utils/axiosConfig";
 //console.log('this code was called at this time');
 
 const initialState = {
-    userSearch: '',
-    tasks: "",
+    userSearch: 'loading',
+    results: "",
     taskPosted: {},
     postingTask: false,
     postingTaskError: null
@@ -30,10 +30,10 @@ export const searchUsers = createAsyncThunk(
 )
 
 
-export const getTasks = createAsyncThunk(
-    'task/getTasks',
+export const getResults = createAsyncThunk(
+    'task/getResults',
     async () => {
-        const dt = await Axios.get(`/admin/tasks`);
+        const dt = await Axios.get(`/1/vote/data`);
         console.log(dt['data']);
         return dt['data'];
     }
@@ -41,7 +41,7 @@ export const getTasks = createAsyncThunk(
 
 
 
-const taskSlice = createSlice({
+const resultSlice = createSlice({
     name: 'task',
     initialState,
     reducers: {
@@ -63,13 +63,13 @@ const taskSlice = createSlice({
             state.postingTask = false
             state.postingTaskError = action.error.message
         })
-        builder.addCase(getTasks.fulfilled, (state, action) => {
-            //console.log(action)
-            state.tasks = action.payload;
+        builder.addCase(getResults.fulfilled, (state, action) => {
+            //console.log()
+            state.results = action.payload;
         })
-        builder.addCase(getTasks.pending, (state) => {state.tasks = 'loading'})
-        builder.addCase(getTasks.rejected, (state) => {
-            state.tasks = null
+        builder.addCase(getResults.pending, (state) => {state.results = 'loading'})
+        builder.addCase(getResults.rejected, (state) => {
+            state.results = null
         })
 
         builder.addCase(searchUsers.pending, (state) => {state.userSearch = 'loading'});
@@ -81,5 +81,5 @@ const taskSlice = createSlice({
 })
 
 
-export default taskSlice.reducer;
-export const { clearTaskPosted, updateTaskID, addNewTask } = taskSlice.actions;
+export default resultSlice.reducer;
+export const { clearTaskPosted, updateTaskID, addNewTask } = resultSlice.actions;

@@ -5,7 +5,7 @@ import imageUploadIcon from '../../assets/images/imageUploadIcon.svg';
 
 import Axios from "../../utils/axiosConfig";
 
-import { searchUsers, updateTaskID } from "../../state/slices/taskSlice";
+import { searchUsers, updateTaskID } from "../../state/slices/resultSlice";
 
 import { useDispatch, useSelector } from "react-redux";
 

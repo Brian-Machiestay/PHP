@@ -5,7 +5,7 @@ import imageUploadIcon from '../../assets/images/imageUploadIcon.svg';
 
 import { convertToUnixEpoch } from "../../utils/dateConversions";
 
-import { postTask, searchUsers, clearTaskPosted} from "../../state/slices/taskSlice";
+import { postTask, searchUsers, clearTaskPosted} from "../../state/slices/resultSlice";
 
 import { useDispatch, useSelector } from "react-redux";
 

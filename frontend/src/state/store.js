@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authSlice from "./slices/authSlice";
 import eventSlice from "./slices/eventSlice";
-import taskSlice from "./slices/taskSlice";
+import resultSlice from "./slices/resultSlice";
 import alertSlice from "./slices/alertSlice";
 import votingSlice from "./slices/votingSlice";
 
@@ -9,7 +9,7 @@ const store = configureStore({
   reducer: {
     auth: authSlice,
     event: eventSlice,
-    task: taskSlice,
+    results: resultSlice,
     alert: alertSlice,
     vote: votingSlice
   },

@@ -8,7 +8,6 @@ import AdminModal from "../modals/adminModal";
 import styles from "../../assets/styles/reusableStyles/adminHeader.module.scss";
 
 import notif from "../../assets/images/bell-outline.svg";
-import pureLogo from "../../assets/images/pureLogo.jpg";
 
 
 const Adminheader = () => {
@@ -16,10 +15,8 @@ const Adminheader = () => {
         <>
             <Aside />
             <div className={styles.container}>
-                <Search />
                 <CreateAdminBtn />
                 <img src={notif} alt="notifications" />
-                <img src={pureLogo} alt="logo" />
                 <p>Admin</p>
             </div>
             <AdminModal />
