@@ -86,3 +86,7 @@ body {
   background-color: red;
   color: white;
 }
+
+button:disabled, button[disabled] {
+  background-color: gray;
+}

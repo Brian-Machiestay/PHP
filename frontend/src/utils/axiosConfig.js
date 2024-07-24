@@ -3,8 +3,8 @@ import { getCookie } from './cookie';
 
 const Axios = axios.create({
     headers: {"X-CSRF-TOKEN": getCookie("X-CSRF-TOKEN")},
-    withCredentials: true,
-    baseURL: 'https://volunteers.devatop.org/api/v1',
+    //withCredentials: true,
+    baseURL: 'http://localhost:8787/api/v1/',
 });
 
 Axios.interceptors.request.use(

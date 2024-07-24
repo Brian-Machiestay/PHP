@@ -2,15 +2,20 @@ import React from "react";
 import styles from "../../assets/styles/reusableStyles/candidateStyle.module.scss";
 // import $ from 'jquery';
 import { useDispatch } from "react-redux";
-import { setNextVotingData, updateVoteData } from "../../state/slices/votingSlice";
+import { setNextVotingData, updateVoteData, setFinishVoting } from "../../state/slices/votingSlice";
 
 const Candidate = (props) => {
       const dispatch = useDispatch();
 
-      const record = (e) => {
-            const vote_data = {"portfolio_id": props.portfolio_id, candidate_id: props.candidate_id};
+      const record = () => {
+            const vote_data = {"portfolio_id": props.portfolio_id, "candidate_id": props.candidate_id};
             //console.log($(`#candidate_${props.candidate_id}`));
             dispatch(updateVoteData(vote_data))
+            if (props.last === true) {
+                  console.log('we got here')
+                  dispatch(setFinishVoting())
+                  return
+            }
             dispatch(setNextVotingData());
             console.log('this was called')
       }

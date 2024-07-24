@@ -31,11 +31,12 @@ Route::group('/api/v1', function() {
             Route::get('/portfolios', [app\controller\PortfolioController::class, 'retrievePortfolio']);
             Route::post('/voter', [app\controller\VoterController::class, 'addVoter']);
             Route::get('/voters', [app\controller\VoterController::class, 'retrieveVoters']);
-            Route::post('/{id}/vote', [app\controller\VoteController::class, 'vote']);
             Route::put('/publish', [app\controller\ClientController::class, 'publish']);
             Route::get('/results', [app\controller\VoteController::class, 'results']);
       });
 
+      Route::any('/{id}/vote', [app\controller\VoteController::class, 'vote']);
+      Route::any('/{id}/vote/data', [app\controller\VoteController::class, 'data']);
 
       Route::group('/admin', function() {
             Route::get('/clients', [app\controller\ClientController::class, 'clients']);
