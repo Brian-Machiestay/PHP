@@ -34,9 +34,13 @@ const VotersList = (props) => {
 
     async function getVoters () {
         //console.log('useEffect called me')
-        const data = await Axios.get('/voters?id=1');
-        console.log(data['data']);
-        setVotersData(data['data']);
+        try {
+            const data = await Axios.get('/voters?id=1');
+            console.log(data['data']);
+            setVotersData(data['data']);
+        } catch (e) {
+            console.log(e)
+        }
     }
 
     let dataToDisplay = votersData.map((vt) => <VoterOne voter_id = {vt['voter_id']} key={vt['voter_id']} voter_name = {vt['voter_name']} voter_email = {vt['voter_email']} />) 
@@ -47,7 +51,7 @@ const VotersList = (props) => {
     return (
         <div className={styles.container} id='tasks'>
             <div className={styles.section1}>
-                <p>Candidates</p>
+                <p>Voters</p>
                 <button className={styles.addCandidate}>add Voter</button>
             </div>
             <div className={styles.other_sections}>
