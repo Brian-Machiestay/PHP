@@ -1,14 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import vol_img from "../../assets/images/account-group-outline.svg";
-import vol_active_img from "../../assets/images/account-group-outline-active.svg";
+import voter_img from "../../assets/images/notebook-outline.svg"
+import voter_img_active from "../../assets/images/notebook-outline-active.svg";
 
-const Volunteerlink = (props) => {
-    let img = vol_img;
-    if (props.active === true) img = vol_active_img;
+const Tasklink = (props) => {
+    let img = voter_img;
+
+    if (props.active === true) {
+        img = voter_img_active;
+    }
+
     return (
-        <Link to='/voters'><img src={img} alt="voters" />Voters</Link>
+        <Link to='/voters'><img src={img} alt="voters" />voters</Link>
     )
 }
 
-export default Volunteerlink;
+export default Tasklink;
