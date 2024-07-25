@@ -30,9 +30,9 @@ Route::group('/api/v1', function() {
             Route::post('/portfolio', [app\controller\PortfolioController::class, 'addPortfolio']);
             Route::get('/portfolios', [app\controller\PortfolioController::class, 'retrievePortfolio']);
             Route::post('/voter', [app\controller\VoterController::class, 'addVoter']);
-            Route::get('/voters', [app\controller\VoterController::class, 'retrieveVoters']);
+            Route::any('/voters', [app\controller\VoterController::class, 'retrieveVoters']);
             Route::put('/publish', [app\controller\ClientController::class, 'publish']);
-            Route::get('/results', [app\controller\VoteController::class, 'results']);
+            Route::any('/results', [app\controller\VoteController::class, 'results']);
       });
 
       Route::any('/{id}/vote', [app\controller\VoteController::class, 'vote']);

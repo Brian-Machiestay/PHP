@@ -37,6 +37,10 @@ class Voter extends Model
         return $this->belongsTo(Client::class, 'client_id', 'id');
     }
 
+    public function user() {
+        return $this->hasOne(User::class, 'voter_id', 'id');
+    }
+
     public function admin() {
         return $this->belongsTo(Administrator::class, 'admin_id');
     }

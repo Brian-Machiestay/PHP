@@ -7,7 +7,7 @@ const Notificationlink = (props) => {
     let img = notif_img;
     if (props.active === true) img = notif_active_img;
     return (
-        <Link to='/'><img src={img} alt="notification" />Notifications</Link>
+        <Link to='/notifications'><img src={img} alt="notification" />Notifications</Link>
     )
 }
 

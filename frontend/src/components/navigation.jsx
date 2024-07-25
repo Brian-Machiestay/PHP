@@ -2,6 +2,7 @@ import React from "react";
 import Dashlink from "./navlinks/dashboardLink";
 import Voterslink from "./navlinks/votersLink";
 import Notificationlink from "./navlinks/notificationLink";
+import CandidatesLink from "./navlinks/candidatesLink";
 import Logout from "./navlinks/logout";
 import styles from "../assets/styles/navigation.module.scss";
 import { Link } from "react-router-dom";
@@ -23,6 +24,7 @@ const Navigation = () => {
                 <Link to='/' className={styles.logo}><p>Thumbs</p></Link>
                 <Dashlink active={active} />
                 <Voterslink active={active} />
+                <CandidatesLink active={false} />
                 <Notificationlink active={active} />
                 <Logout />
                 <div className={styles.createAdminBtn}><CreateAdminBtn /></div>

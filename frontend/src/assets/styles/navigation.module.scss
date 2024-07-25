@@ -1,4 +1,5 @@
 @use './screen';
+@use './colors';
 
 .container {
     display: flex;
@@ -7,7 +8,7 @@
     padding: 0 3%;
     height: 100%;
     padding-right: 40px;
-    background-color: rgb(12, 14, 146);
+    background-color: colors.$brand-color;
 
     .logo {
         font-size: 20pt;

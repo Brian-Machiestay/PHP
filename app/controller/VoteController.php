@@ -76,15 +76,15 @@ class VoteController
         //echo $client->preferences;
         $res = ['client_id' => $client->id, 'client_name' => $client->user->name];
         //$res += ['portfolios' => array()];
+        $res['portfolios'] = array();
         foreach($client->portfolios as $pp) {
-            $pp_data = [];
-            $pp_data += ['id' => $pp->id, 'portfolio_name' => $pp->category];
-            $res['portfolios'][$pp->id] = $pp_data;
-            $res['portfolios'][$pp->id]['candidates'] = array();
+            $pp_data = ['id' => $pp->id, 'portfolio_name' => $pp->category];
+            $pp_data['candidates'] = array();
             foreach($pp->candidates as $cc) {
                 $cc_data = ['id' => $cc->id, 'candidate_name' => $cc->user->name, 'vote_count' => Vote::voteCount($cc, $pp)];
-                array_push($res['portfolios'][$pp->id]['candidates'], $cc_data);
+                array_push($pp_data['candidates'], $cc_data);
             }
+            array_push($res['portfolios'], $pp_data);
         }
         return json($res);
     }

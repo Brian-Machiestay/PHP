@@ -28,7 +28,7 @@ const Vote = () => {
             //console.log('rendered')
             
             try {
-                  const dd = await Axios.get('/2/vote/data');
+                  const dd = await Axios.get('/1/vote/data');
                   console.log(dd);
                   dispatch(setVotingData(dd['data']));
                   dispatch(setNextVotingData());
@@ -42,11 +42,10 @@ const Vote = () => {
       }
 
       const castVote = async () => {
-            //console.log(voting_data);
-            const data = {};
+            
             try {
                   $('#cast').prop('disabled', true);
-                  let data = await Axios.post('/2/vote?voter_id=1', voting_data);
+                  let data = await Axios.post('/1/vote?voter_id=15', voting_data);
                   $('.voted_info').text('Thankyou for casting your vote');
                   console.log(data);
             } catch (e) {

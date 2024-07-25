@@ -41,7 +41,12 @@ class VoterController
     public function retrieveVoters(Request $request) {
         $id = $request->get('id');
         $client = Client::getClientWithId($id);
-        return json($client->voters);
+        $res = array();
+        foreach($client->voters as $vt) {
+            $vt_res = ['voter_id' => $vt->id, 'voter_name' => $vt->user->name, 'voter_email' => $vt->user->email];
+            array_push($res, $vt_res);
+        }
+        return json($res);
     }
 
 }

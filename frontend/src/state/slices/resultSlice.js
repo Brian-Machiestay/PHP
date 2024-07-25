@@ -33,7 +33,7 @@ export const searchUsers = createAsyncThunk(
 export const getResults = createAsyncThunk(
     'task/getResults',
     async () => {
-        const dt = await Axios.get(`/1/vote/data`);
+        const dt = await Axios.get(`/results?id=1`);
         console.log(dt['data']);
         return dt['data'];
     }
