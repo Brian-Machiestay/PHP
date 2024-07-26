@@ -7,9 +7,8 @@ use app\model\Client;
 use app\model\Preferences;
 use app\model\User;
 use Exception;
-use Illuminate\Support\Facades\Hash;
+use Shopwwi\WebmanAuth\Facade\Auth;
 use support\Db;
-use support\Response;
 /**
  * Client controller
  */
@@ -43,7 +42,7 @@ class ClientController
         try {
             $client = new Client(['approved' => false]);
             $client->save();
-            $usr = new User(['client_id' => $client->id, 'email' => $data['email'], 'password' => Hash::make($data['password']), 'name' => $data['name']]);
+            $usr = new User(['client_id' => $client->id, 'email' => $data['email'], 'password' => password_hash($data['password'], PASSWORD_DEFAULT), 'name' => $data['name']]);
             $usr->save();
             $preference = new Preferences(['allowcandidates' => false, 'allowadmins' => false, 'client_id' => $client->id]);
             $preference->save();
@@ -57,6 +56,25 @@ class ClientController
         
     }
 
+    public function login(Request $request) {
+        $credentials = ['email' => $request->post('email'), 'password' => $request->post('password')];
+        $user = User::getUserWithCredentials($credentials['email'], $credentials['password']);
+        //var_dump($request->cookie());
+        //echo password_hash($request->post('password'), PASSWORD_DEFAULT);
+        if ($user == null) return Response('Invalid credentials', 400);
+        $token = Auth::guard('client')->login($user);
+        if ($token != false) {
+            var_dump($token);
+            return json($token)->cookie('access_token', $token->access_token,null, '/*')->cookie('refresh_token', $token->refresh_token,null, '/*');
+        }
+        return Response('Invalid credentials', 400);
+    
+    }
+
+    public function logout (Request $request) {
+        Auth::logout();
+        return Response('logged out successfully');
+    }
 
     public function clients(Request $resquest) {
         $allClients = Client::getAllClients();

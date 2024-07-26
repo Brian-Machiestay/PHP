@@ -14,13 +14,13 @@ const initialState = {
 export const login = createAsyncThunk(
   'content/login',
   async (data) => {
-    const res = await Axios.post('/auth/session', data)
+    const res = await Axios.post('/auth/login', data)
     const dt = await res.data;
-    console.log('setting the new csrf')
+    //console.log('setting the new csrf')
     Axios.defaults.headers.common["X-CSRF-TOKEN"] = await dt['csrf-token'];
-    console.log(Axios.defaults.headers.common["X-CSRF-TOKEN"]);
-    console.log(Axios.defaults.headers.common)
-    console.log(dt);
+    //console.log(Axios.defaults.headers.common["X-CSRF-TOKEN"]);
+    //console.log(Axios.defaults.headers.common)
+    //console.log(dt);
     return dt;
   }
 )

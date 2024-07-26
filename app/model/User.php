@@ -3,7 +3,6 @@
 namespace app\model;
 
 use support\Model;
-use Illuminate\Hashing\BcryptHasher;
 
 /**
  *
@@ -56,4 +55,14 @@ class User extends Model
     public static function getUsersWithName($name) {
         return self::where('name', $name)->get();
     }
+
+    public static function getUserWithCredentials(String $email, String $pwd) : User | null {
+        $user = self::where('email', $email)->first();
+        if ($user == null) return $user;
+        //echo var_dump(password_verify($pwd, $user->password));
+        if (password_verify($pwd, $user->password)) return $user;
+        echo 'we were here';
+        return null;
+    }
+
 }

@@ -104,6 +104,7 @@ class ComposerStaticInit0eb6907791f1b336aacf92f8b7b6ad47
             'Support\\Exception\\' => 18,
             'Support\\Bootstrap\\' => 18,
             'Support\\' => 8,
+            'Shopwwi\\WebmanAuth\\' => 19,
         ),
         'R' => 
         array (
@@ -171,6 +172,7 @@ class ComposerStaticInit0eb6907791f1b336aacf92f8b7b6ad47
         'F' => 
         array (
             'Fruitcake\\Cors\\' => 15,
+            'Firebase\\JWT\\' => 13,
             'FastRoute\\' => 10,
         ),
         'D' => 
@@ -387,6 +389,10 @@ class ComposerStaticInit0eb6907791f1b336aacf92f8b7b6ad47
         array (
             0 => __DIR__ . '/..' . '/workerman/webman-framework/src/support',
         ),
+        'Shopwwi\\WebmanAuth\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/shopwwi/webman-auth/src',
+        ),
         'Respect\\Validation\\' => 
         array (
             0 => __DIR__ . '/..' . '/workerman/validation/library',
@@ -562,6 +568,10 @@ class ComposerStaticInit0eb6907791f1b336aacf92f8b7b6ad47
         'Fruitcake\\Cors\\' => 
         array (
             0 => __DIR__ . '/..' . '/fruitcake/php-cors/src',
+        ),
+        'Firebase\\JWT\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
         ),
         'FastRoute\\' => 
         array (

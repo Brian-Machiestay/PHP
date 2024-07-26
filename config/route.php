@@ -16,7 +16,9 @@ use Webman\Route;
 
 Route::group('/api/v1', function() {
       Route::group('/auth', function() {
-            Route::post('/client', [app\controller\ClientController::class, 'client']);
+            Route::any('/client', [app\controller\ClientController::class, 'client']);
+            Route::any('/login', [app\controller\ClientController::class, 'login']);
+            Route::any('/logout', [app\controller\ClientController::class, 'logout']);
       });
 
       Route::group('', function() {
@@ -33,7 +35,9 @@ Route::group('/api/v1', function() {
             Route::any('/voters', [app\controller\VoterController::class, 'retrieveVoters']);
             Route::put('/publish', [app\controller\ClientController::class, 'publish']);
             Route::any('/results', [app\controller\VoteController::class, 'results']);
-      });
+      })->middleware([
+            app\middleware\Auth::class,
+        ]);
 
       Route::any('/{id}/vote', [app\controller\VoteController::class, 'vote']);
       Route::any('/{id}/vote/data', [app\controller\VoteController::class, 'data']);

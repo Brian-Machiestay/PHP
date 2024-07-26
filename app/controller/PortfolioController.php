@@ -6,6 +6,8 @@ use support\Db;
 use app\model\Client;
 use Exception;
 
+use Shopwwi\WebmanAuth\Facade\Auth;
+
 class PortfolioController
 {
     public function addPortfolio(Request $request)
@@ -28,6 +30,8 @@ class PortfolioController
     }
 
     public function retrievePortfolio(Request $request) {
+        
+        //var_dump($usr);
         $id = $request->get('id');
         $client = Client::getClientWithId($id);
         $portfolios = $client->portfolios()->get();

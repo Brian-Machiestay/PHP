@@ -70,7 +70,7 @@ const Login = () => {
                     </div>
                     <div className={styles.terms}>
                         <label htmlFor='terms'>By continuing, you agree to Thumb's terms of service and acknowledge
-                        that Devatop privacy policy applies to you</label>
+                        that Thumb's privacy policy applies to you</label>
                     </div>
                     <button type='submit' onClick={loginUser}>Login</button>
                     <p className={styles.error}></p>
