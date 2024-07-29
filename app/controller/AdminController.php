@@ -2,20 +2,24 @@
 
 namespace app\controller;
 
+use app\middleware\Auth;
 use support\Request;
 use support\Db;
 use app\model\Administrator;
 use app\model\Client;
 use app\model\User;
 use Exception;
+use Shopwwi\WebmanAuth\Facade\Auth as Authenticate;
 
 class AdminController
 {
     public function addAdmin(Request $request)
     {
-        $id = $request->get('id');
-        $client = Client::getClientWithId($id);
-        if ($id == null) return Response('client does not exist', 400);
+        $usr = Authenticate::user();
+        $client = $usr->client;
+        
+        //$client = Client::getClientWithId($id);
+        //if ($id == null) return Response('client does not exist', 400);
         $data = [
             'email' => $request->post('email'),
             'level' => $request->post('level'),
@@ -43,9 +47,11 @@ class AdminController
     }
 
     public function getAdmins(Request $request) {
-        $id = $request->get('id');
-        $client = Client::getClientWithId($id);
-        echo $client;
+        //$id = $request->get('id');
+        //$client = Client::getClientWithId($id);
+        $usr = Authenticate::user();
+        $client = $usr->client;
+        //echo $client;
         $admins = $client->administrators;
         echo json($admins);
         return json($admins);

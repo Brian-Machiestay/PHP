@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/admin/static/css/main.9a3b638d.css",
+    "main.js": "/admin/static/js/main.47fe3457.js",
+    "static/js/453.1c13788b.chunk.js": "/admin/static/js/453.1c13788b.chunk.js",
+    "static/media/Mobile-voting.jpg": "/admin/static/media/Mobile-voting.e59cc348dcd1740bb948.jpg",
+    "static/media/password.svg": "/admin/static/media/password.45be23d058cd42dc6aa9502305834a49.svg",
+    "static/media/username.svg": "/admin/static/media/username.f534e431ce43384074cfae4742fddea7.svg",
+    "static/media/bulletin-board-active.svg": "/admin/static/media/bulletin-board-active.0a6767ea0ff162cf6f462df84ff4c41e.svg",
+    "static/media/bulletin-board.svg": "/admin/static/media/bulletin-board.789a407199c90dd5b39ee20b5021a7fe.svg",
+    "static/media/search.svg": "/admin/static/media/search.69caa55a1adf6e255fecfa8cfc6f3267.svg",
+    "static/media/notebook-outline-active.svg": "/admin/static/media/notebook-outline-active.c7d6a216b3dd85f1b17c9aeb245618d3.svg",
+    "static/media/notebook-outline.svg": "/admin/static/media/notebook-outline.c7d6a216b3dd85f1b17c9aeb245618d3.svg",
+    "index.html": "/admin/index.html",
+    "static/media/bell-outline-active.svg": "/admin/static/media/bell-outline-active.b20e5f1f42b83844e2936de1218ad5de.svg",
+    "static/media/bell-outline.svg": "/admin/static/media/bell-outline.b20e5f1f42b83844e2936de1218ad5de.svg",
+    "static/media/calendar-check.svg": "/admin/static/media/calendar-check.fee67c8da991c7913af03651c1b5394f.svg",
+    "static/media/Vector-active.svg": "/admin/static/media/Vector-active.39c1fe4ef9e6fe102613d8c20070b110.svg",
+    "static/media/Vector.svg": "/admin/static/media/Vector.39c1fe4ef9e6fe102613d8c20070b110.svg",
+    "static/media/time-check.svg": "/admin/static/media/time-check.944f1ba2796859117154abeb321e5cf5.svg",
+    "static/media/logout.svg": "/admin/static/media/logout.f4b8e8324fbec221f65982d4416e89c5.svg",
+    "static/media/menu.svg": "/admin/static/media/menu.0daea1e8813a2279fcc51a095af0843e.svg",
+    "main.9a3b638d.css.map": "/admin/static/css/main.9a3b638d.css.map",
+    "main.47fe3457.js.map": "/admin/static/js/main.47fe3457.js.map",
+    "453.1c13788b.chunk.js.map": "/admin/static/js/453.1c13788b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9a3b638d.css",
+    "static/js/main.47fe3457.js"
+  ]
+}

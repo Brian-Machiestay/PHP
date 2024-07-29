@@ -6,14 +6,16 @@ use support\Db;
 use app\model\Client;
 use Exception;
 
-use Shopwwi\WebmanAuth\Facade\Auth;
+use Shopwwi\WebmanAuth\Facade\Auth as Authenticate;
 
 class PortfolioController
 {
     public function addPortfolio(Request $request)
     {
-        $id = $request->get('id');
-        $client = Client::getClientWithId($id);
+        //$id = $request->get('id');
+        //$client = Client::getClientWithId($id);
+        $usr = Authenticate::user();
+        $client = $usr->client;
         $category = $request->post('category');
         if ($category == null) return Response('category cannot be empty', 400);
 
@@ -32,8 +34,10 @@ class PortfolioController
     public function retrievePortfolio(Request $request) {
         
         //var_dump($usr);
-        $id = $request->get('id');
-        $client = Client::getClientWithId($id);
+        //$id = $request->get('id');
+        //$client = Client::getClientWithId($id);
+        $usr = Authenticate::user();
+        $client = $usr->client;
         $portfolios = $client->portfolios()->get();
         return json($portfolios);
     }

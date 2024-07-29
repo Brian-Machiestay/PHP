@@ -6,6 +6,7 @@ import Adminheader from '../components/reusables/adminHeader';
 import CandidateList from '../components/candidateList';
 
 //import CreateTaskModal from '../components/modals/createTaskModal';
+import PortfolioModal from '../components/modals/portfolioModal';
 
 
 const Candidates = () => {
@@ -14,6 +15,7 @@ const Candidates = () => {
             <MenuHead />
             <Adminheader />
             <CandidateList />
+            <PortfolioModal />
         </div>
     )
 }

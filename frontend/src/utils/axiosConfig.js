@@ -3,7 +3,7 @@ import { getCookie } from './cookie';
 
 const Axios = axios.create({
     headers: {"X-CSRF-TOKEN": getCookie("X-CSRF-TOKEN")},
-    //withCredentials: true,
+    withCredentials: true,
     baseURL: 'http://localhost:8787/api/v1/',
 });
 

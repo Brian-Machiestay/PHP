@@ -13,10 +13,14 @@ import { useEffect } from "react";
 
 import { getResults } from "../state/slices/resultSlice";
 
-//import $ from 'jquery';
+import $ from 'jquery';
 //let navigate = ''
 const CandidateList = (props) => {
     console.log('tasks was rendered')
+
+    const openPortfolioModal = () => {
+        $('#createPortfolioModal').modal('show');
+    }
 
     useEffect(
        () => {
@@ -53,7 +57,7 @@ const CandidateList = (props) => {
             <div className={styles.section1}>
                 <p>Candidates</p>
                 <button className={styles.addCandidate}>add candidate</button>
-                <button>add portfolio</button>
+                <button onClick={openPortfolioModal}>add portfolio</button>
             </div>
             <div className={styles.other_sections}>
                 <div className={styles.section2}>

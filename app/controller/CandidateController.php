@@ -9,13 +9,16 @@ use Exception;
 use support\Request;
 use support\Db;
 use support\Response;
+use Shopwwi\WebmanAuth\Facade\Auth as Authenticate;
 
 class CandidateController
 {
     public function addCandidate(Request $request)
     {
-        $id = $request->get('id');
-        $client = Client::getClientWithId($id);
+        //$id = $request->get('id');
+        //$client = Client::getClientWithId($id);
+        $usr = Authenticate::user();
+        $client = $usr->client;
         $data = [
             'portfolio_id' => $request->post('portfolio_id'),
             'name' => $request->post('name'),
@@ -44,8 +47,10 @@ class CandidateController
     }
 
     public static function retrieveCandidates(Request $request) {
-        $id = $request->get('id');
-        $client = Client::getClientWithId($id);
+        //$id = $request->get('id');
+        //$client = Client::getClientWithId($id);
+        $usr = Authenticate::user();
+        $client = $usr->client;
         $candidates = $client->candidates;
         return json($candidates);
     }

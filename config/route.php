@@ -16,9 +16,9 @@ use Webman\Route;
 
 Route::group('/api/v1', function() {
       Route::group('/auth', function() {
-            Route::any('/client', [app\controller\ClientController::class, 'client']);
-            Route::any('/login', [app\controller\ClientController::class, 'login']);
-            Route::any('/logout', [app\controller\ClientController::class, 'logout']);
+            Route::post('/client', [app\controller\ClientController::class, 'client']);
+            Route::post('/login', [app\controller\ClientController::class, 'login']);
+            Route::post('/logout', [app\controller\ClientController::class, 'logout']);
       });
 
       Route::group('', function() {
@@ -32,7 +32,7 @@ Route::group('/api/v1', function() {
             Route::post('/portfolio', [app\controller\PortfolioController::class, 'addPortfolio']);
             Route::get('/portfolios', [app\controller\PortfolioController::class, 'retrievePortfolio']);
             Route::post('/voter', [app\controller\VoterController::class, 'addVoter']);
-            Route::any('/voters', [app\controller\VoterController::class, 'retrieveVoters']);
+            Route::get('/voters', [app\controller\VoterController::class, 'retrieveVoters']);
             Route::put('/publish', [app\controller\ClientController::class, 'publish']);
             Route::any('/results', [app\controller\VoteController::class, 'results']);
       })->middleware([
@@ -49,6 +49,12 @@ Route::group('/api/v1', function() {
 
 Route::group('/{client_id}', function () {
       Route::put('/preferences', [app\controller\PreferencesController::class, 'updatePreferences']);
+});
+
+Route::get('/[{path:.+}]', [app\controller\RootController::class, 'index']);
+
+Route::options('[{path:.+}]', function () {
+      return response('');
 });
 
 

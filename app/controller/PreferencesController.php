@@ -7,13 +7,16 @@ use support\Request;
 use Rakit\Validation\Validator;
 use support\Response;
 use app\model\Preferences;
-
+use Shopwwi\WebmanAuth\Facade\Auth as Authenticate;
 class PreferencesController
 {
     public function updatePreferences(Request $request)
     {
-        $id = $request->get('id');
-        $client = Client::getClientWithId($id);
+        //$id = $request->get('id');
+        //$client = Client::getClientWithId($id);
+        $usr = Authenticate::user();
+        $client = $usr->client;
+
         if ($client == null) {
             return Response('client does not exist', 400);
         }
@@ -32,15 +35,17 @@ class PreferencesController
         $preferences = Preferences::updateClientPreferences(
             $request->post('allowCandidates'),  
             $request->post('allowAdmins'), 
-            $id);
+            $client->id);
         return json($preferences);
     }
 
     public function retrieveClientPreferences(Request $request) {
-        $id = $request->get('id');
-        $client = Client::getClientWithId($id);
+        //$id = $request->get('id');
+        //$client = Client::getClientWithId($id);
+        $usr = Authenticate::user();
+        $client = $usr->client;
         if ($client == null) return Response('client does not exist', 400);
-        return json(Preferences::getClientPreferences($id));
+        return json(Preferences::getClientPreferences($client->id));
     }
 
 }

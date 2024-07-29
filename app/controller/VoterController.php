@@ -8,13 +8,15 @@ use app\model\User;
 use support\Db;
 use Exception;
 use support\Response;
-
+use Shopwwi\WebmanAuth\Facade\Auth as Authenticate;
 class VoterController
 {
     public function addVoter(Request $request)
     {
-        $id = $request->get('id');
-        $client = Client::getClientWithId($id);
+        //$id = $request->get('id');
+        //$client = Client::getClientWithId($id);
+        $usr = Authenticate::user();
+        $client = $usr->client;
         $data = [
             'name' => $request->post('name'),
             'email' => $request->post('email'),
@@ -39,8 +41,10 @@ class VoterController
     }
 
     public function retrieveVoters(Request $request) {
-        $id = $request->get('id');
-        $client = Client::getClientWithId($id);
+        //$id = $request->get('id');
+        //$client = Client::getClientWithId($id);
+        $usr = Authenticate::user();
+        $client = $usr->client;
         $res = array();
         foreach($client->voters as $vt) {
             $vt_res = ['voter_id' => $vt->id, 'voter_name' => $vt->user->name, 'voter_email' => $vt->user->email];
