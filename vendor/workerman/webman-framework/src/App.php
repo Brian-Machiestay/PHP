@@ -208,7 +208,9 @@ class App
     {
         if (
             !$path ||
-            strpos($path, '..') !== false ||
+            $path[0] !== '/' ||
+            strpos($path, '/../') !== false ||
+            substr($path, -3) === '/..' ||
             strpos($path, "\\") !== false ||
             strpos($path, "\0") !== false
         ) {
@@ -227,7 +229,7 @@ class App
      */
     protected static function getFallback(string $plugin = ''): Closure
     {
-        // when route, controller and action not found, try to use Route::fallback
+        // When route, controller and action not found, try to use Route::fallback
         return Route::getFallback($plugin) ?: function () {
             try {
                 $notFoundContent = file_get_contents(static::$publicPath . '/404.html');

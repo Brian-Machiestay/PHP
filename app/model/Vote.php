@@ -3,6 +3,7 @@
 namespace app\model;
 
 use support\Model;
+use app\model\Mail;
 
 /**
  *

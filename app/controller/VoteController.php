@@ -11,6 +11,8 @@ use app\model\Vote;
 use Exception;
 use support\Db;
 use Shopwwi\WebmanAuth\Facade\Auth as Authenticate;
+
+use app\model\Mail;
 class VoteController
 {
     public function vote(Request $request, int $id)
@@ -108,5 +110,11 @@ class VoteController
             array_push($res['portfolios'], $pp_data);
         }
         return json($res);
+    }
+
+    public static function sendVotingLink() {
+        $mail = new Mail();
+        $mail->sendVotingLink(['brian machiestay'], 'https://example.com'); //
+        return Response('mail sent successfully');
     }
 }
