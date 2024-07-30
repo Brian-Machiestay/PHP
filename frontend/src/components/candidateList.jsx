@@ -22,6 +22,11 @@ const CandidateList = (props) => {
         $('#createPortfolioModal').modal('show');
     }
 
+    const openCandidateModal = () => {
+        //console.log('we are here')
+        $('#createCandidateModal').modal('show');
+    }
+
     useEffect(
        () => {
          getCandidateData();
@@ -56,7 +61,7 @@ const CandidateList = (props) => {
         <div className={styles.container} id='tasks'>
             <div className={styles.section1}>
                 <p>Candidates</p>
-                <button className={styles.addCandidate}>add candidate</button>
+                <button className={styles.addCandidate} onClick={openCandidateModal}>add candidate</button>
                 <button onClick={openPortfolioModal}>add portfolio</button>
             </div>
             <div className={styles.other_sections}>

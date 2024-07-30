@@ -7,19 +7,24 @@ import cal_check from "../assets/images/calendar-check.svg";
 import VoterOne from "./reusables/voterOne";
 //import {useNavigate} from 'react-router-dom';
 
+import VoterModal from "./modals/voterModal";
+
 
 import {useSelector, useDispatch} from 'react-redux'
 import { useEffect, useState } from "react";
 
-import { getResults } from "../state/slices/resultSlice";
-
 import Axios from "../utils/axiosConfig";
+
+import $ from 'jquery';
 
 //import $ from 'jquery';
 //let navigate = ''
 const VotersList = (props) => {
       const [votersData, setVotersData] = useState([]);
     //console.log('tasks was rendered')
+    const openVoterModal = () => {
+        $('#createVoterModal').modal('show')
+    }
 
     useEffect(
        () => {
@@ -35,7 +40,7 @@ const VotersList = (props) => {
     async function getVoters () {
         //console.log('useEffect called me')
         try {
-            const data = await Axios.get('/voters?id=1');
+            const data = await Axios.get('/voters');
             console.log(data['data']);
             setVotersData(data['data']);
         } catch (e) {
@@ -52,7 +57,7 @@ const VotersList = (props) => {
         <div className={styles.container} id='tasks'>
             <div className={styles.section1}>
                 <p>Voters</p>
-                <button className={styles.addCandidate}>add Voter</button>
+                <button className={styles.addCandidate} onClick={openVoterModal}>add Voter</button>
             </div>
             <div className={styles.other_sections}>
                 <div className={styles.section2}>
@@ -66,6 +71,7 @@ const VotersList = (props) => {
                 }
                 </div>
             </div>
+            <VoterModal />
         </div>
     )
 }

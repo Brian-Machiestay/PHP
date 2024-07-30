@@ -7,6 +7,7 @@ import CandidateList from '../components/candidateList';
 
 //import CreateTaskModal from '../components/modals/createTaskModal';
 import PortfolioModal from '../components/modals/portfolioModal';
+import CandidateModal from '../components/modals/candidateModal';
 
 
 const Candidates = () => {
@@ -16,6 +17,7 @@ const Candidates = () => {
             <Adminheader />
             <CandidateList />
             <PortfolioModal />
+            <CandidateModal />
         </div>
     )
 }

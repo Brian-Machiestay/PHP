@@ -57,5 +57,29 @@
         }
     }
 
-    
+    label {
+        width: 100%;
+        input {
+            width: 100%;
+            margin: 10px 0;
+        }
+    }
+
+    .portfolios {
+        
+        position: relative;
+
+        .portfolioResults {
+            display: none;
+            box-shadow: 2px 2px 2px blue;
+            background-color: white;
+            position: absolute;
+            width: 100%;
+            margin-top: -10px;
+
+            p {
+                margin: 5px 0;
+            }
+        }
+    }
 }
