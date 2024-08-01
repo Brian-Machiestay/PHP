@@ -38,7 +38,6 @@ class ClientController
             if ($thisUser->client() != null) return Response('Name already exists', 400); 
         }
        
-        DB::beginTransaction();
         try {
             $client = new Client(['approved' => false]);
             $client->save();
@@ -46,7 +45,6 @@ class ClientController
             $usr->save();
             $preference = new Preferences(['allowcandidates' => false, 'allowadmins' => false, 'client_id' => $client->id]);
             $preference->save();
-            DB::commit();
             return json(['id'=> $client->id]);
         } catch (Exception $e) {
             echo $e;

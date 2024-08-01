@@ -35,41 +35,33 @@ class VoteController
         */
         $data = $request->post();
         echo var_dump($data);
-        DB::beginTransaction();
+        $votes = [];
         foreach($data as $dd) {
             echo json($dd);
             $can = $dd['candidate_id'];
             $portf = $dd['portfolio_id'];
             $candidate = Candidate::getCandidate($client, $can);
             if ($candidate == null) {
-                DB::rollBack();
                 return Response('candidate does not exist', 400);
             }
             $portfolio = Portfolio::getPortfolio($client, $portf);
             if ($portfolio == null) {
-                DB::rollBack();
                 return Response('portfolio does not exist', 400);
             }
             if ($candidate->portfolio != $portfolio) {
-                DB::rollBack();
                 return Response('candidate is not registered under this portfolio');
             }
 
             if (Vote::voted($voter, $portfolio)) {
-                DB::rollBack();
                 return Response('sorry. you have already voted for a candidate under one of the portfolios', 400);
             }
-            try {
-                $vote = $portfolio->votes()->create(['candidate_id' => $candidate->id, 'voter_id' => $voter->id]);
-                $vote->save();
-            } catch (Exception $e) {
-                DB::rollBack();
-                echo $e;
-                return Response('An error occurred. voting not successful', 500);
+            $vote = $portfolio->votes()->create(['candidate_id' => $candidate->id, 'voter_id' => $voter->id]);
+                array_push($votes, $vote);
             }
-        }
-        DB::commit();
-        return Response('sucessful. Thankyou for letting your vote count');
+
+        $isSuccessful = Vote::bulkVote($votes);
+        if (!$isSuccessful) return Response('sucessful. Thankyou for letting your vote count');
+        return Response('Sorry, Voting was not successful, an error occurred');
     }
 
     public function results(Request $request) {
@@ -114,7 +106,8 @@ class VoteController
 
     public static function sendVotingLink() {
         $mail = new Mail();
-        $mail->sendVotingLink(['brian machiestay'], 'https://example.com'); //
-        return Response('mail sent successfully');
+        $isSent = $mail->sendVotingLink(['brian machiestay'], 'https://example.com'); //
+        if ($isSent) return Response('Mail sent successfully');
+        return Response('Could not send mail, an error occurred', 500);
     }
 }

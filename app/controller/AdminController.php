@@ -31,13 +31,12 @@ class AdminController
         $usr = User::getUserWithEmail($data['email']);
         if ($usr != null) return Response('This email account already exists');
         if ($data['level'] != 'basic' && $data['level'] != 'principal') return Response("level must be either 'basic' or 'principal'");
-        DB::beginTransaction();
+
         try{
             $admin = $client->administrators()->create($data);
             $usr = User::create(['email' => $data['email'], 'administrator_id' => $admin->id, 'name' => $data['name']]);
             $admin->save();
             $usr->save();
-            DB::commit();
         } catch(Exception $e) {
             DB::rollBack();
             echo $e;

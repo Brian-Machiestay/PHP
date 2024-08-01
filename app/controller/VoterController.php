@@ -23,13 +23,12 @@ class VoterController
         ];
         if ($data['name'] == null || $data['email'] == null) return Response('some fields are missing');
         if (User::getUserWithEmail($data['email']) != null) return Response('account already exist');
-        DB::beginTransaction();
+
         try {
             $voter = $client->voters()->create();
             $usr = User::create(['email' => $data['email'], 'name' => $data['name'], 'voter_id' => $voter->id]);
             $voter->save();
             $usr->save();
-            DB::commit();
             return json(['voter_id' => $voter->id]);
         } catch(Exception $e) {
             echo $e;

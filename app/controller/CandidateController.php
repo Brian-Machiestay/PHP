@@ -30,13 +30,12 @@ class CandidateController
         if ($pp == null) return Response('portfolio does not exist', 400);
         $user = User::getUserWithEmail($data['email']);
         if ($user != null) return  Response('account already exists');
-        DB::beginTransaction();
+
         try {
             $candidate = $client->candidates()->create(['portfolio_id' => $data['portfolio_id']]);
             $candidate->save();
             $usr = User::create(['email' => $data['email'], 'name' => $data['name'], 'candidate_id' => $candidate->id]);
             $usr->save();
-            DB::commit();
             return json(['candidate_id' => $candidate->id]);
         } catch (Exception $e) {
             echo $e;

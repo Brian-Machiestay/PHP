@@ -4,6 +4,7 @@ namespace app\model;
 
 use support\Model;
 use app\model\Mail;
+use Exception;
 
 /**
  *
@@ -48,6 +49,17 @@ class Vote extends Model
 
     public static function voteCount(Candidate $candidate, Portfolio $portfolio) {
         return self::where('candidate_id', $candidate->id)->where('portfolio_id', $portfolio->id)->count();
+    }
+
+    public static function bulkVote (Array $votes) {
+        try {
+            foreach ($votes as $vt) {
+                $vt->save();
+                return true;
+            }
+        } catch (Exception $e) {
+                return false;
+        }
     }
     
 }
