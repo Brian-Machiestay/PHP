@@ -42,6 +42,8 @@ Route::group('/api/v1', function() {
       Route::any('/{id}/vote', [app\controller\VoteController::class, 'vote']);
       Route::any('/{id}/vote/data', [app\controller\VoteController::class, 'data']);
       Route::get('/sendLink', [app\controller\VoteController::class, 'sendVotingLink']);
+      Route::get('/test', [app\controller\TestController::class, 'index']);
+      Route::get('/testAuth', [app\controller\TestController::class, 'testAuth']);
 
       Route::group('/admin', function() {
             Route::get('/clients', [app\controller\ClientController::class, 'clients']);

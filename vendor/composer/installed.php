@@ -3,7 +3,7 @@
         'name' => 'workerman/webman',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '059bee2754980f1328847e3b200e6411cf490324',
+        'reference' => '367c9094501aa38b2d68fa34a8ed9ee185a1ae23',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -854,6 +854,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'tinywan/jwt' => array(
+            'pretty_version' => 'v1.10.1',
+            'version' => '1.10.1.0',
+            'reference' => 'ccc7e6dad69fbe14a812e4a67e046e6b33ca4cee',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../tinywan/jwt',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'tymon/jwt-auth' => array(
             'pretty_version' => '2.1.1',
             'version' => '2.1.1.0',
@@ -965,7 +974,7 @@
         'workerman/webman' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '059bee2754980f1328847e3b200e6411cf490324',
+            'reference' => '367c9094501aa38b2d68fa34a8ed9ee185a1ae23',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

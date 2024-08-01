@@ -23,4 +23,5 @@ return [
     'runtime_path' => base_path(false) . DIRECTORY_SEPARATOR . 'runtime',
     'controller_suffix' => 'Controller',
     'controller_reuse' => false,
+    'jwt' => include(__DIR__.'/jwt.php'),
 ];

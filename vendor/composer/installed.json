@@ -6195,6 +6195,56 @@
             "install-path": "../symfony/var-exporter"
         },
         {
+            "name": "tinywan/jwt",
+            "version": "v1.10.1",
+            "version_normalized": "1.10.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Tinywan/webman-jwt.git",
+                "reference": "ccc7e6dad69fbe14a812e4a67e046e6b33ca4cee"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Tinywan/webman-jwt/zipball/ccc7e6dad69fbe14a812e4a67e046e6b33ca4cee",
+                "reference": "ccc7e6dad69fbe14a812e4a67e046e6b33ca4cee",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "firebase/php-jwt": "^6.8",
+                "php": "^7.1||^8.0",
+                "workerman/webman-framework": "^1.2.1"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.6",
+                "illuminate/database": "^8.83",
+                "mockery/mockery": "^1.5",
+                "phpstan/phpstan": "^1.4",
+                "phpunit/phpunit": "^9.0",
+                "topthink/think-orm": "^2.0",
+                "vimeo/psalm": "^4.22",
+                "workerman/webman": "^1.0"
+            },
+            "time": "2024-07-09T12:08:44+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Tinywan\\Jwt\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "JSON Web Token (JWT) for webman plugin",
+            "support": {
+                "issues": "https://github.com/Tinywan/webman-jwt/issues",
+                "source": "https://github.com/Tinywan/webman-jwt/tree/v1.10.1"
+            },
+            "install-path": "../tinywan/jwt"
+        },
+        {
             "name": "tymon/jwt-auth",
             "version": "2.1.1",
             "version_normalized": "2.1.1.0",

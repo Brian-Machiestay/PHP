@@ -24,6 +24,7 @@ return array(
     'Webman\\Console\\' => array($vendorDir . '/webman/console/src'),
     'Webman\\' => array($vendorDir . '/workerman/webman-framework/src'),
     'Tymon\\JWTAuth\\' => array($vendorDir . '/tymon/jwt-auth/src'),
+    'Tinywan\\Jwt\\' => array($vendorDir . '/tinywan/jwt/src'),
     'Termwind\\' => array($vendorDir . '/nunomaduro/termwind/src'),
     'Symfony\\Polyfill\\Php83\\' => array($vendorDir . '/symfony/polyfill-php83'),
     'Symfony\\Polyfill\\Php80\\' => array($vendorDir . '/symfony/polyfill-php80'),
