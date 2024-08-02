@@ -28,7 +28,7 @@ class Mail
         $this->mail->setFrom('brianmachiestay@gmail.com', 'Brian Machiestay');
     }
    
-    public function sendVotingLink(Array $voters, string $link) {
+    public function sendVotingLink($voters, string $link) {
         //$data = array('name' => "brian machiestay");
         
         $this->mail->addAddress('briamachiestay@gmail.com');

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "07d2f78fe8ff59915837c5bd422439bc",
+    "content-hash": "d3c736084b90407be991b09b46774aa0",
     "packages": [
         {
             "name": "brick/math",
@@ -2686,6 +2686,92 @@
                 }
             ],
             "time": "2023-02-08T01:06:31+00:00"
+        },
+        {
+            "name": "paragonie/sodium_compat",
+            "version": "v2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/paragonie/sodium_compat.git",
+                "reference": "f65c82939ab17aeff538f9bf6d582f65cc7f255e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/paragonie/sodium_compat/zipball/f65c82939ab17aeff538f9bf6d582f65cc7f255e",
+                "reference": "f65c82939ab17aeff538f9bf6d582f65cc7f255e",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.1",
+                "php-64bit": "*"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7|^8|^9",
+                "vimeo/psalm": "^4|^5"
+            },
+            "suggest": {
+                "ext-sodium": "Better performance, password hashing (Argon2i), secure memory management (memzero), and better security."
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "autoload.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "ISC"
+            ],
+            "authors": [
+                {
+                    "name": "Paragon Initiative Enterprises",
+                    "email": "security@paragonie.com"
+                },
+                {
+                    "name": "Frank Denis",
+                    "email": "jedisct1@pureftpd.org"
+                }
+            ],
+            "description": "Pure PHP implementation of libsodium; uses the PHP extension if it exists",
+            "keywords": [
+                "Authentication",
+                "BLAKE2b",
+                "ChaCha20",
+                "ChaCha20-Poly1305",
+                "Chapoly",
+                "Curve25519",
+                "Ed25519",
+                "EdDSA",
+                "Edwards-curve Digital Signature Algorithm",
+                "Elliptic Curve Diffie-Hellman",
+                "Poly1305",
+                "Pure-PHP cryptography",
+                "RFC 7748",
+                "RFC 8032",
+                "Salpoly",
+                "Salsa20",
+                "X25519",
+                "XChaCha20-Poly1305",
+                "XSalsa20-Poly1305",
+                "Xchacha20",
+                "Xsalsa20",
+                "aead",
+                "cryptography",
+                "ecdh",
+                "elliptic curve",
+                "elliptic curve cryptography",
+                "encryption",
+                "libsodium",
+                "php",
+                "public-key cryptography",
+                "secret-key cryptography",
+                "side-channel resistant"
+            ],
+            "support": {
+                "issues": "https://github.com/paragonie/sodium_compat/issues",
+                "source": "https://github.com/paragonie/sodium_compat/tree/v2.0.1"
+            },
+            "time": "2024-04-24T12:06:31+00:00"
         },
         {
             "name": "phpmailer/phpmailer",
@@ -5946,53 +6032,6 @@
             "time": "2024-06-28T08:00:31+00:00"
         },
         {
-            "name": "tinywan/jwt",
-            "version": "v1.10.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Tinywan/webman-jwt.git",
-                "reference": "ccc7e6dad69fbe14a812e4a67e046e6b33ca4cee"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Tinywan/webman-jwt/zipball/ccc7e6dad69fbe14a812e4a67e046e6b33ca4cee",
-                "reference": "ccc7e6dad69fbe14a812e4a67e046e6b33ca4cee",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "firebase/php-jwt": "^6.8",
-                "php": "^7.1||^8.0",
-                "workerman/webman-framework": "^1.2.1"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^3.6",
-                "illuminate/database": "^8.83",
-                "mockery/mockery": "^1.5",
-                "phpstan/phpstan": "^1.4",
-                "phpunit/phpunit": "^9.0",
-                "topthink/think-orm": "^2.0",
-                "vimeo/psalm": "^4.22",
-                "workerman/webman": "^1.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Tinywan\\Jwt\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "JSON Web Token (JWT) for webman plugin",
-            "support": {
-                "issues": "https://github.com/Tinywan/webman-jwt/issues",
-                "source": "https://github.com/Tinywan/webman-jwt/tree/v1.10.1"
-            },
-            "time": "2024-07-09T12:08:44+00:00"
-        },
-        {
             "name": "tymon/jwt-auth",
             "version": "2.1.1",
             "source": {
@@ -6492,16 +6531,16 @@
         },
         {
             "name": "workerman/redis",
-            "version": "v2.0.2",
+            "version": "v2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/walkor/redis.git",
-                "reference": "542f10c243ba846f1f3b4c07a26136c5fa80d972"
+                "reference": "4e910d4b0c2f2101a1f8dbd28be79fd864f7aab8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/walkor/redis/zipball/542f10c243ba846f1f3b4c07a26136c5fa80d972",
-                "reference": "542f10c243ba846f1f3b4c07a26136c5fa80d972",
+                "url": "https://api.github.com/repos/walkor/redis/zipball/4e910d4b0c2f2101a1f8dbd28be79fd864f7aab8",
+                "reference": "4e910d4b0c2f2101a1f8dbd28be79fd864f7aab8",
                 "shasum": ""
             },
             "require": {
@@ -6521,9 +6560,9 @@
             "homepage": "http://www.workerman.net",
             "support": {
                 "issues": "https://github.com/walkor/redis/issues",
-                "source": "https://github.com/walkor/redis/tree/v2.0.2"
+                "source": "https://github.com/walkor/redis/tree/v2.0.3"
             },
-            "time": "2023-06-08T01:39:47+00:00"
+            "time": "2024-08-01T03:38:26+00:00"
         },
         {
             "name": "workerman/redis-queue",
@@ -6755,6 +6794,42 @@
             "time": "2024-07-04T08:26:39+00:00"
         },
         {
+            "name": "xpzhu/webman-jwt",
+            "version": "v1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://gitee.com/xpzhu/webman-jwt",
+                "reference": "b0fbfe432f51c88b54f3d0bfafbc96b49f0f70dc"
+            },
+            "require": {
+                "lcobucci/jwt": "^4.2 || ^5.0",
+                "nesbot/carbon": "^2.0",
+                "php": ">=7.4",
+                "workerman/webman-framework": "^1.5.0"
+            },
+            "require-dev": {
+                "workerman/webman": "^1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "xpzhu\\Jwt\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "xpzhu",
+                    "email": "lj.xia@163.com"
+                }
+            ],
+            "description": "JSON Web Token (JWT) for webman plugin",
+            "time": "2023-04-04T14:54:47+00:00"
+        },
+        {
             "name": "yzh52521/easyhttp",
             "version": "v1.1.3",
             "source": {
@@ -6849,6 +6924,49 @@
                 "source": "https://github.com/yzh52521/webman-hash/tree/v1.0.1"
             },
             "time": "2023-05-11T09:06:03+00:00"
+        },
+        {
+            "name": "yzh52521/webman-jwt-auth",
+            "version": "v3.0.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yuanzhihai/webman-jwt-auth.git",
+                "reference": "07bcd899a7bd2ea9b5c0ad9b9886fcefef58678e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yuanzhihai/webman-jwt-auth/zipball/07bcd899a7bd2ea9b5c0ad9b9886fcefef58678e",
+                "reference": "07bcd899a7bd2ea9b5c0ad9b9886fcefef58678e",
+                "shasum": ""
+            },
+            "require": {
+                "lcobucci/jwt": "^4.2 || ^5.0",
+                "nesbot/carbon": "^2.0",
+                "php": ">=8.0.0",
+                "workerman/webman-framework": "^1.5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "yzh52521\\JwtAuth\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "yzh52521",
+                    "email": "396751927@qq.com"
+                }
+            ],
+            "description": "Lcobucci/jwt Integration For webman",
+            "support": {
+                "issues": "https://github.com/yuanzhihai/webman-jwt-auth/issues",
+                "source": "https://github.com/yuanzhihai/webman-jwt-auth/tree/v3.0.8"
+            },
+            "time": "2023-10-13T05:55:51+00:00"
         },
         {
             "name": "yzh52521/webman-validate",

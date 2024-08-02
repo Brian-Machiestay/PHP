@@ -8,7 +8,9 @@ $baseDir = dirname($vendorDir);
 return array(
     'yzh52521\\validate\\' => array($vendorDir . '/yzh52521/webman-validate/src'),
     'yzh52521\\hash\\' => array($vendorDir . '/yzh52521/webman-hash/src'),
+    'yzh52521\\JwtAuth\\' => array($vendorDir . '/yzh52521/webman-jwt-auth/src'),
     'yzh52521\\EasyHttp\\' => array($vendorDir . '/yzh52521/easyhttp/src'),
+    'xpzhu\\Jwt\\' => array($vendorDir . '/xpzhu/webman-jwt/src'),
     'voku\\' => array($vendorDir . '/voku/portable-ascii/src/voku'),
     'support\\' => array($vendorDir . '/workerman/webman-framework/src/support'),
     'app\\View\\Components\\' => array($baseDir . '/app/view/components'),
@@ -24,7 +26,6 @@ return array(
     'Webman\\Console\\' => array($vendorDir . '/webman/console/src'),
     'Webman\\' => array($vendorDir . '/workerman/webman-framework/src'),
     'Tymon\\JWTAuth\\' => array($vendorDir . '/tymon/jwt-auth/src'),
-    'Tinywan\\Jwt\\' => array($vendorDir . '/tinywan/jwt/src'),
     'Termwind\\' => array($vendorDir . '/nunomaduro/termwind/src'),
     'Symfony\\Polyfill\\Php83\\' => array($vendorDir . '/symfony/polyfill-php83'),
     'Symfony\\Polyfill\\Php80\\' => array($vendorDir . '/symfony/polyfill-php80'),

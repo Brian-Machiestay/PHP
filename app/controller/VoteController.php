@@ -61,7 +61,7 @@ class VoteController
 
         $isSuccessful = Vote::bulkVote($votes);
         if (!$isSuccessful) return Response('sucessful. Thankyou for letting your vote count');
-        return Response('Sorry, Voting was not successful, an error occurred');
+        return Response('Sorry, Voting was not successful, an error occurred', 500);
     }
 
     public function results(Request $request) {
@@ -106,7 +106,9 @@ class VoteController
 
     public static function sendVotingLink() {
         $mail = new Mail();
-        $isSent = $mail->sendVotingLink(['brian machiestay'], 'https://example.com'); //
+        $usr = Authenticate::user();
+        $client = $usr->client;
+        $isSent = $mail->sendVotingLink($client->voters, getenv('THUMBS_DOMAIN_NAME'));
         if ($isSent) return Response('Mail sent successfully');
         return Response('Could not send mail, an error occurred', 500);
     }

@@ -23,11 +23,12 @@ class ComposerStaticInit0eb6907791f1b336aacf92f8b7b6ad47
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
         '35a6ad97d21e794e7e22a17d806652e4' => __DIR__ . '/..' . '/nunomaduro/termwind/src/Functions.php',
+        '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
-        '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         '2df68f9e79c919e2d88506611769ed2e' => __DIR__ . '/..' . '/respect/stringifier/src/stringify.php',
+        '3109cb1a231dcd04bee1f9f620d46975' => __DIR__ . '/..' . '/paragonie/sodium_compat/autoload.php',
         'bb86edb2c8e579242b2c4c0575786fa9' => __DIR__ . '/..' . '/yzh52521/webman-validate/src/helper.php',
         'da5b71a9ad8465d48da441e2f36823b6' => __DIR__ . '/../..' . '/support/helpers.php',
     );
@@ -37,7 +38,12 @@ class ComposerStaticInit0eb6907791f1b336aacf92f8b7b6ad47
         array (
             'yzh52521\\validate\\' => 18,
             'yzh52521\\hash\\' => 14,
+            'yzh52521\\JwtAuth\\' => 17,
             'yzh52521\\EasyHttp\\' => 18,
+        ),
+        'x' => 
+        array (
+            'xpzhu\\Jwt\\' => 10,
         ),
         'v' => 
         array (
@@ -71,7 +77,6 @@ class ComposerStaticInit0eb6907791f1b336aacf92f8b7b6ad47
         'T' => 
         array (
             'Tymon\\JWTAuth\\' => 14,
-            'Tinywan\\Jwt\\' => 12,
             'Termwind\\' => 9,
         ),
         'S' => 
@@ -207,9 +212,17 @@ class ComposerStaticInit0eb6907791f1b336aacf92f8b7b6ad47
         array (
             0 => __DIR__ . '/..' . '/yzh52521/webman-hash/src',
         ),
+        'yzh52521\\JwtAuth\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/yzh52521/webman-jwt-auth/src',
+        ),
         'yzh52521\\EasyHttp\\' => 
         array (
             0 => __DIR__ . '/..' . '/yzh52521/easyhttp/src',
+        ),
+        'xpzhu\\Jwt\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/xpzhu/webman-jwt/src',
         ),
         'voku\\' => 
         array (
@@ -270,10 +283,6 @@ class ComposerStaticInit0eb6907791f1b336aacf92f8b7b6ad47
         'Tymon\\JWTAuth\\' => 
         array (
             0 => __DIR__ . '/..' . '/tymon/jwt-auth/src',
-        ),
-        'Tinywan\\Jwt\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/tinywan/jwt/src',
         ),
         'Termwind\\' => 
         array (

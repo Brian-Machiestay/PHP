@@ -51,7 +51,9 @@
     "tymon/jwt-auth": "^2.1",
     "shopwwi/webman-auth": "^1.1",
     "phpmailer/phpmailer": "^6.9",
-    "tinywan/jwt": "^1.10"
+    "yzh52521/webman-jwt-auth": "^3.0",
+    "xpzhu/webman-jwt": "^1.0",
+    "paragonie/sodium_compat": "^2.0"
   },
   "suggest": {
     "ext-event": "For better performance. "

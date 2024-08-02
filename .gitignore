@@ -2,3 +2,4 @@ node_modules
 public/admin
 .env
 frontend/build/*
+vendor
