@@ -1,4 +1,4 @@
-import React from "react";
+import React, { act } from "react";
 import Dashlink from "./navlinks/dashboardLink";
 import Voterslink from "./navlinks/votersLink";
 import Notificationlink from "./navlinks/notificationLink";
@@ -7,6 +7,7 @@ import Logout from "./navlinks/logout";
 import styles from "../assets/styles/navigation.module.scss";
 import { Link } from "react-router-dom";
 import CreateAdminBtn from "./reusables/createAdminBtn";
+import SettingsLink from "./navlinks/settingsLink";
 import $ from 'jquery';
 
 const Navigation = () => {
@@ -26,6 +27,7 @@ const Navigation = () => {
                 <Voterslink active={active} />
                 <CandidatesLink active={false} />
                 <Notificationlink active={active} />
+                <SettingsLink active={active} />
                 <Logout />
                 <div className={styles.createAdminBtn}><CreateAdminBtn /></div>
             </section>

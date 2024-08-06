@@ -21,8 +21,8 @@ class VoterController
             'name' => $request->post('name'),
             'email' => $request->post('email'),
         ];
-        if ($data['name'] == null || $data['email'] == null) return Response('some fields are missing');
-        if (User::getUserWithEmail($data['email']) != null) return Response('account already exist');
+        if ($data['name'] == null || $data['email'] == null) return Response('some fields are missing', 400);
+        if (User::getUserWithEmail($data['email']) != null) return Response('account already exist', 400);
 
         try {
             $voter = $client->voters()->create();
@@ -33,7 +33,7 @@ class VoterController
         } catch(Exception $e) {
             echo $e;
             DB::rollBack();
-            return Response('An error ocurred. Could not add voter');
+            return Response('An error ocurred. Could not add voter', 500);
         }
 
         return json([]);

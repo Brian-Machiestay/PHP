@@ -5,12 +5,14 @@ import styles from '../../assets/styles/modalStyles/adminModalStyle.module.scss'
 
 import ConfirmAdminModal from "./confirmAdminModal";
 import Axios from "../../utils/axiosConfig";
+import toast from "react-hot-toast";
 
 const portfolioModal = () => {
 
   const submitPortfolio = async (e) => {
     e.preventDefault();
     $('#createPortfolioModal').modal('hide')
+    const toastId = toast.loading('adding portfolio');
 
     try {
       const data = {
@@ -19,9 +21,10 @@ const portfolioModal = () => {
       console.log(data)
       const dt = await Axios.post('/portfolio', data)
       console.log(dt['data']);
+      toast.success('Portfolio added successfully', { id: toastId })
     } catch (e) {
       console.log(e)
-
+      toast.error(e.response.data, {id: toastId});
     }
     //$('#createPortfolioModal').modal('show')
   }

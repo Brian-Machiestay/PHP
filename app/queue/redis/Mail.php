@@ -1,17 +1,29 @@
 <?php
 
-namespace app\model;
-
+namespace app\queue\redis;
 use Exception;
 use PHPMailer\PHPMailer\PHPMailer;
-//use PHPMailer\PHPMailer\Exception;
 
-/**
- * 
- */
-class Mail
+use Webman\RedisQueue\Consumer;
+use Webman\RedisQueue\Client;
+
+class Mail implements Consumer
 {
+    // 要消费的队列名
+    public $queue = 'send_mail';
+
+    // 连接名，对应 plugin/webman/redis-queue/redis.php 里的连接`
+    public $connection = 'default';
+
     private $mail;
+
+    // 消费
+    public function consume($data)
+    {
+        // 无需反序列化
+        var_export($data);
+        echo 'dflkas;jfkdfjslfk;jsfl;ksdjflksdjflksdfjdslf';
+    }
 
     public function __construct()
     {
@@ -30,7 +42,7 @@ class Mail
    
     public function sendVotingLink($voters, string $link) {
         //$data = array('name' => "brian machiestay");
-        
+        Client::connection('default')->send('send_mail', 'book and cook');
         $this->mail->addAddress('briamachiestay@gmail.com');
         $this->mail->Subject = 'This is a Test email';
         $this->mail->Body = 'This is a test email message';
@@ -42,5 +54,5 @@ class Mail
             echo $e;
             return false;
         }
-    }
+    }           
 }

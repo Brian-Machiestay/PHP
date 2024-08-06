@@ -22,8 +22,8 @@ class ComposerStaticInit0eb6907791f1b336aacf92f8b7b6ad47
         '25072dd6e2470089de65ae7bf11d3109' => __DIR__ . '/..' . '/symfony/polyfill-php72/bootstrap.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
-        '35a6ad97d21e794e7e22a17d806652e4' => __DIR__ . '/..' . '/nunomaduro/termwind/src/Functions.php',
         '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
+        '35a6ad97d21e794e7e22a17d806652e4' => __DIR__ . '/..' . '/nunomaduro/termwind/src/Functions.php',
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
@@ -64,10 +64,12 @@ class ComposerStaticInit0eb6907791f1b336aacf92f8b7b6ad47
         ),
         'W' => 
         array (
+            'Workerman\\Stomp\\' => 16,
             'Workerman\\Redis\\' => 16,
             'Workerman\\RedisQueue\\' => 21,
             'Workerman\\Crontab\\' => 18,
             'Workerman\\' => 10,
+            'Webman\\Stomp\\' => 13,
             'Webman\\RedisQueue\\' => 18,
             'Webman\\Event\\' => 13,
             'Webman\\Cors\\' => 12,
@@ -244,6 +246,10 @@ class ComposerStaticInit0eb6907791f1b336aacf92f8b7b6ad47
         array (
             0 => __DIR__ . '/..' . '/maennchen/zipstream-php/src',
         ),
+        'Workerman\\Stomp\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/workerman/stomp/src',
+        ),
         'Workerman\\Redis\\' => 
         array (
             0 => __DIR__ . '/..' . '/workerman/redis/src',
@@ -259,6 +265,10 @@ class ComposerStaticInit0eb6907791f1b336aacf92f8b7b6ad47
         'Workerman\\' => 
         array (
             0 => __DIR__ . '/..' . '/workerman/workerman',
+        ),
+        'Webman\\Stomp\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/webman/stomp/src',
         ),
         'Webman\\RedisQueue\\' => 
         array (

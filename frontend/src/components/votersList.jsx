@@ -7,6 +7,8 @@ import cal_check from "../assets/images/calendar-check.svg";
 import VoterOne from "./reusables/voterOne";
 //import {useNavigate} from 'react-router-dom';
 
+import toast from "react-hot-toast";
+
 import VoterModal from "./modals/voterModal";
 
 
@@ -24,6 +26,19 @@ const VotersList = (props) => {
     //console.log('tasks was rendered')
     const openVoterModal = () => {
         $('#createVoterModal').modal('show')
+    }
+
+    const sendVotingLink = async () => {
+        const toastId = toast.loading('Sending voting link');
+        try {
+            
+            const response = await Axios.get('/sendLink');
+            console.log(response['data']);
+            toast.success('Link sent successfully', { id: toastId });
+        } catch ($e) {
+            console.error($e);
+            toast.error('Error sending link', { id: toastId });
+        }
     }
 
     useEffect(
@@ -57,7 +72,9 @@ const VotersList = (props) => {
         <div className={styles.container} id='tasks'>
             <div className={styles.section1}>
                 <p>Voters</p>
-                <button className={styles.addCandidate} onClick={openVoterModal}>add Voter</button>
+                
+                <button className={`${styles.addCandidate} ${styles.addVoter}`} onClick={openVoterModal}>add Voter</button>
+                <button className={`${styles.addCandidate} ${styles.sendLink}`} onClick={sendVotingLink}>Send Link</button>
             </div>
             <div className={styles.other_sections}>
                 <div className={styles.section2}>

@@ -8,11 +8,13 @@ use app\model\Client;
 use app\model\Portfolio;
 use app\model\Voter;
 use app\model\Vote;
+use app\queue\redis\Mail;
 use Exception;
 use support\Db;
+use Webman\RedisQueue\Client as RedisClient;
 use Shopwwi\WebmanAuth\Facade\Auth as Authenticate;
 
-use app\model\Mail;
+//use app\queue\redis\Mail;
 class VoteController
 {
     public function vote(Request $request, int $id)
@@ -108,8 +110,10 @@ class VoteController
         $mail = new Mail();
         $usr = Authenticate::user();
         $client = $usr->client;
+        //$mail->sendlinkInQue($client->voters);
+        RedisClient::connection('default')->send('send_mail', 'book');
         $isSent = $mail->sendVotingLink($client->voters, getenv('THUMBS_DOMAIN_NAME'));
-        if ($isSent) return Response('Mail sent successfully');
-        return Response('Could not send mail, an error occurred', 500);
+        //if ($isSent) return Response('Mail sent successfully');
+        return Response('mail sent successfully');
     }
 }

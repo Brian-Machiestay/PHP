@@ -6756,6 +6756,41 @@
             "install-path": "../webman/redis-queue"
         },
         {
+            "name": "webman/stomp",
+            "version": "v1.1.1",
+            "version_normalized": "1.1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/webman-php/stomp.git",
+                "reference": "cad91eeff07876d5715877de63c46573d8bcac0f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/webman-php/stomp/zipball/cad91eeff07876d5715877de63c46573d8bcac0f",
+                "reference": "cad91eeff07876d5715877de63c46573d8bcac0f",
+                "shasum": ""
+            },
+            "require": {
+                "workerman/stomp": "^1.0",
+                "workerman/webman-framework": "^1.2.1"
+            },
+            "time": "2022-03-22T12:26:54+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Webman\\Stomp\\": "./src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Stomp queue plugin for webman.",
+            "support": {
+                "issues": "https://github.com/webman-php/stomp/issues",
+                "source": "https://github.com/webman-php/stomp/tree/v1.1.1"
+            },
+            "install-path": "../webman/stomp"
+        },
+        {
             "name": "workerman/crontab",
             "version": "v1.0.6",
             "version_normalized": "1.0.6.0",
@@ -6885,6 +6920,44 @@
                 "source": "https://github.com/walkor/redis-queue/tree/v1.2.0"
             },
             "install-path": "../workerman/redis-queue"
+        },
+        {
+            "name": "workerman/stomp",
+            "version": "v1.0.9",
+            "version_normalized": "1.0.9.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/walkor/stomp.git",
+                "reference": "07e6b38b0dc488cbc715a306be2ccef391010744"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/walkor/stomp/zipball/07e6b38b0dc488cbc715a306be2ccef391010744",
+                "reference": "07e6b38b0dc488cbc715a306be2ccef391010744",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4",
+                "workerman/workerman": ">=3.3.0"
+            },
+            "time": "2024-01-17T08:49:52+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Workerman\\Stomp\\": "./src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "homepage": "http://www.workerman.net",
+            "support": {
+                "issues": "https://github.com/walkor/stomp/issues",
+                "source": "https://github.com/walkor/stomp/tree/v1.0.9"
+            },
+            "install-path": "../workerman/stomp"
         },
         {
             "name": "workerman/validation",

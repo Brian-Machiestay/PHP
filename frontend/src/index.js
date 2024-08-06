@@ -10,8 +10,7 @@ import './assets/styles/index.scss';
 
 import store from "./state/store.js";
 import { Provider } from "react-redux";
-
-import Alert from './components/reusables/alert';
+import { Toaster } from 'react-hot-toast';
 
 
 
@@ -20,7 +19,7 @@ root.render(
   //<React.StrictMode>
     <Provider store={store}>
       <App />
-      <Alert />
+      <Toaster />
     </Provider>
   //</React.StrictMode>
 );

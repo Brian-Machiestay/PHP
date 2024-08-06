@@ -17,6 +17,7 @@ function App() {
             <Route path='voters' element={<Voters />}></Route>
             <Route path='candidates' element={<Candidates />}></Route>
             <Route path='notifications' element={<Notifications />}></Route>
+            <Route path='settings'></Route>
           </Route>
           <Route path='/login' element={<Login />}></Route>
           <Route path='/vote' element={<Vote />}></Route>

@@ -6,6 +6,7 @@ import Axios from "../../utils/axiosConfig";
 
 import { useRef } from "react";
 import { useNavigate } from 'react-router-dom';
+import toast from "react-hot-toast";
 
 const VoterModal = () => {
   const navigate = useNavigate('');
@@ -17,6 +18,7 @@ const VoterModal = () => {
     const voter_name = $(voterEl.current).val()
     const voter_email = $(voterEmailEl.current).val();
     if (voter_name === '' || voter_email === '') return
+    const toastId = toast.loading('add voter to the system');
     try {
       const data = {
         "name": voter_name,
@@ -26,10 +28,12 @@ const VoterModal = () => {
       const dt = await Axios.post('/voter', data)
       console.log(dt['data']);
       $('#createVoterModal').modal('hide')
+      toast.success('Voter added to the system', {id: toastId});
     } catch (e) {
       console.log(e)
       $('#createVoterModal').modal('hide')
       if (e.response.status === 401) navigate('/login');
+      toast.error(e.response.data, { id: toastId });
     }
     //$('#createPortfolioModal').modal('show')
   }
