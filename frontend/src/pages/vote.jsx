@@ -3,18 +3,21 @@ import styles from '../assets/styles/pageStyles/vote.module.scss';
 import vote_img from '../assets/images/Mobile-voting.jpg';
 import Candidate from "../components/reusables/candidate";
 
-import { setVotingData } from "../state/slices/votingSlice";
+import { setFinishVoting, setVotingData } from "../state/slices/votingSlice";
 
 import { useSelector, useDispatch } from "react-redux";
 import { setNextVotingData } from "../state/slices/votingSlice";
 import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
 import Axios from "../utils/axiosConfig";
 import $ from 'jquery';
 
 
 
+
 const Vote = () => {
+      const [searchParams, setSearchParams] = useSearchParams();
       const [fetching, setFetching] = useState(false);
       const nextPortfolio = useSelector((state) => state.vote.nextData);
       const voting_data = useSelector((state) => state.vote.vote_data);
@@ -22,6 +25,7 @@ const Vote = () => {
       const finish_voting = useSelector((state) => state.vote.finish_voting);
       //console.log(nextPortfolio);
       console.log(voting_data)
+      console.log(searchParams.get('client_id'));
 
       const startVoting = async () => {
             //setInitial(false);
@@ -37,6 +41,19 @@ const Vote = () => {
             }
       }
 
+      const skipPortfolio = () => {
+            if (nextPortfolio['last'] == true) dispatch(setFinishVoting())
+            else dispatch(setNextVotingData());
+      }
+
+      const buttonForFinishVoting = () => {
+            if (finish_voting) return '';
+            if (Object.keys(nextPortfolio).length !== 0){
+                  return <button onClick={skipPortfolio}>skip</button>
+            }
+            return <button id='start' onClick={startVoting}>start voting</button>
+      }
+
       if (fetching === true) {
             setFetching(true);
       }
@@ -45,7 +62,7 @@ const Vote = () => {
             
             try {
                   $('#cast').prop('disabled', true);
-                  let data = await Axios.post('/14/vote?voter_id=20', voting_data);
+                  let data = await Axios.post(`/${searchParams.get('client_id')}/vote?i=${searchParams.get('i')}`, voting_data);
                   $('.voted_info').text('Thankyou for casting your vote');
                   console.log(data);
             } catch (e) {
@@ -81,8 +98,10 @@ const Vote = () => {
                   {
                        dataToDisplay
                   }
-                  {
-                        Object.keys(nextPortfolio).length !== 0? '' : <button id='start' onClick={startVoting}>start voting</button>
+                  {/*
+                        finish_voting || Object.keys(nextPortfolio).length !== 0? <button onClick={skipPortfolio}>next</button> : <button id='start' onClick={startVoting}>start voting</button>
+                  */
+                 buttonForFinishVoting()
                   }
 
                   {

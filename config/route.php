@@ -55,6 +55,8 @@ Route::group('/{client_id}', function () {
       Route::put('/preferences', [app\controller\PreferencesController::class, 'updatePreferences']);
 });
 
+Route::get('/vote', [app\controller\VoteController::class, 'voteInterface']);
+
 Route::get('/[{path:.+}]', [app\controller\RootController::class, 'index']);
 
 Route::options('[{path:.+}]', function () {

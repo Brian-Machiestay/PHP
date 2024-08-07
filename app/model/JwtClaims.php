@@ -33,7 +33,7 @@ class JwtClaims
     function getClaims(string $token) {
         $claims = JWT::decode($token, new Key($this->key, $this->alg));
         //var_dump($claims);
-        $claimsObj = (array) $claims;
+        //$claimsObj = (array) $claims;
         return $claims->claims;
     }
 }

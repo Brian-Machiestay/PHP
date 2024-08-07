@@ -58,7 +58,8 @@ class Vote extends Model
                 return true;
             }
         } catch (Exception $e) {
-                return false;
+            echo $e;
+            return false;
         }
     }
     

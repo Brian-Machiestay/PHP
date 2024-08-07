@@ -5,6 +5,7 @@ namespace app\controller;
 use app\model\Candidate;
 use support\Request;
 use app\model\Client;
+use app\model\JwtClaims;
 use app\model\Portfolio;
 use app\model\Voter;
 use app\model\Vote;
@@ -20,10 +21,22 @@ class VoteController
     public function vote(Request $request, int $id)
     {
         //echo $id;
-        $voter_id = $request->get('voter_id');
-        $client = Client::getClientWithId($id);
-        //echo json($client);
-        //$data = json($request->post());
+        try {
+            $token = $request->get('i');
+            $client = Client::getClientWithId((int)$id);
+        } catch (Exception $e) {
+            return Response('client id must be a number and identity cannot be empty', 400);
+        }
+
+        try {
+            $jwt = new JwtClaims();
+            $voter_data = $jwt->getClaims($token);
+            $voter_id = $voter_data->id;
+        } catch (Exception $e) {
+            echo $e;
+            return Response('poll has ended', 400);
+        }
+        
         $voter = Voter::getVoterWithId($voter_id);
         if ($client == null) return Response('client does not exist', 400);
         if ($voter_id == null) return Response('voter does not exist', 400);
@@ -90,7 +103,7 @@ class VoteController
 
     public function data (Request $request, $id) {
         //$id = $request->get('id');
-        $client = Client::getClientWithId($id);
+        $client = Client::getClientWithId((int) $id);
 
         $res = ['client_id' => $client->id, 'client_name' => $client->user->name];
         $res['portfolios'] = array();
@@ -106,14 +119,27 @@ class VoteController
         return json($res);
     }
 
-    public static function sendVotingLink() {
-        $mail = new Mail();
+    public function sendVotingLink(Request $request) {
         $usr = Authenticate::user();
         $client = $usr->client;
-        //$mail->sendlinkInQue($client->voters);
-        RedisClient::connection('default')->send('send_mail', 'book');
-        $isSent = $mail->sendVotingLink($client->voters, getenv('THUMBS_DOMAIN_NAME'));
-        //if ($isSent) return Response('Mail sent successfully');
+        Mail::sendVotingLink($client->voters);
         return Response('mail sent successfully');
+    }
+
+    public function voteInterface (Request $request) {
+        $identity = $request->get('i');
+        if ($identity == null) return Response('', 404);
+        var_dump($identity);
+        $jwt = new JwtClaims();
+        try {
+            $data = $jwt->getClaims($identity);
+            return view('/index/index');
+        } catch (Exception $e) {
+            echo $e;
+            return Response('We cannot identify you', 404);
+        }
+        
+        //var_dump($data);
+        
     }
 }

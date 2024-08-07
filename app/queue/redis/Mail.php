@@ -6,6 +6,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 
 use Webman\RedisQueue\Consumer;
 use Webman\RedisQueue\Client;
+use app\model\JwtClaims;
 
 class Mail implements Consumer
 {
@@ -15,44 +16,44 @@ class Mail implements Consumer
     // 连接名，对应 plugin/webman/redis-queue/redis.php 里的连接`
     public $connection = 'default';
 
-    private $mail;
-
     // 消费
     public function consume($data)
     {
-        // 无需反序列化
-        var_export($data);
-        echo 'dflkas;jfkdfjslfk;jsfl;ksdjflksdjflksdfjdslf';
-    }
-
-    public function __construct()
-    {
-        $this->mail = new PHPMailer(true);
-        //echo getenv('MAIL_HOST');
-        $this->mail->isSMTP();
-        $this->mail->Host = getenv('MAIL_HOST');
-        $this->mail->Password = getenv('MAIL_PASSWORD');
-        //echo var_dump(getenv('MAIL_USERNAME'));
-        $this->mail->Username = getenv('MAIL_USERNAME');
-        $this->mail->Port = (int) getenv('MAIL_PORT');
-        $this->mail->SMTPAuth = true;
-        $this->mail->SMTPSecure = 'tls';
-        $this->mail->setFrom('brianmachiestay@gmail.com', 'Brian Machiestay');
-    }
-   
-    public function sendVotingLink($voters, string $link) {
-        //$data = array('name' => "brian machiestay");
-        Client::connection('default')->send('send_mail', 'book and cook');
-        $this->mail->addAddress('briamachiestay@gmail.com');
-        $this->mail->Subject = 'This is a Test email';
-        $this->mail->Body = 'This is a test email message';
-        //$this->mail->send();
+        $mail = new PHPMailer(true);
+        $mail->SMTPDebug = 1;
+        $mail->isSMTP();
+        $mail->Host = getenv('MAIL_HOST');
+        $mail->Password = getenv('MAIL_PASSWORD');
+        $mail->Username = getenv('MAIL_USERNAME');
+        $mail->Port = (int) getenv('MAIL_PORT');
+        $mail->SMTPAuth = true;
+        $mail->SMTPSecure = 'tls';
+        $mail->setFrom('brianmachiestay@gmail.com', 'Brian Machiestay');
+        $mail->addAddress($data['email']);
+        $mail->Subject = $data['subject'];
+        $mail->isHTML(true);
+        $mail->Body = $data['msg'];
         try {
-            $this->mail->send();
-            return true;
+            $mail->send();
         } catch (Exception $e) {
             echo $e;
-            return false;
         }
-    }           
+        //var_dump($data);
+    }
+   
+    public static function sendVotingLink($voters) {
+        foreach ($voters as $vt) {
+            $subject = 'Voting link from ' . $vt->client->user->name;
+            $data = ['email' => $vt->user->email, 'id' => $vt->id, 'client_id' => $vt->client->id, 'subject' => $subject];
+            $msg = '<p>Hi ' . $vt->user->name . '</p> <p>A poll has been opened by ' . $vt->client->user->name . ' and you are a voter in that poll.</p> <p>Click on the button below to cast your vote</p>';
+            $jwt = new JwtClaims();
+            $jwt = $jwt->getJwt($data, 300);
+            $link = getenv('THUMBS_VOTING_DOMAIN') . '/vote?i=' . $jwt . '&client_id=' . $vt->client->id;
+            $msg .= '<button style="background-color: green; outline: none; border: none; border-radius: 5px; margin-left: 40%; padding: 10px"><a style="color: white; text-decoration: none; font-weight: bold" href="' . $link . '">Vote Here</button>';
+            $msg .= '<p>NOTE: <span style="color: violet">the link is personalized and so sharing it would impact your chance</span></p>';
+            $msg .= 'THUMBS 🗳️';
+            $data['msg'] = $msg;
+            Client::connection('default')->send('send_mail', $data);
+        }
+    }
 }
