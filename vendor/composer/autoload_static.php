@@ -18,9 +18,9 @@ class ComposerStaticInit0eb6907791f1b336aacf92f8b7b6ad47
         '662a729f963d39afe703c9d9b7ab4a8c' => __DIR__ . '/..' . '/symfony/polyfill-php83/bootstrap.php',
         '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
-        'ef65a1626449d89d0811cf9befce46f0' => __DIR__ . '/..' . '/illuminate/events/functions.php',
         '25072dd6e2470089de65ae7bf11d3109' => __DIR__ . '/..' . '/symfony/polyfill-php72/bootstrap.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
+        'ef65a1626449d89d0811cf9befce46f0' => __DIR__ . '/..' . '/illuminate/events/functions.php',
         'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
         '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
         '35a6ad97d21e794e7e22a17d806652e4' => __DIR__ . '/..' . '/nunomaduro/termwind/src/Functions.php',
@@ -75,6 +75,7 @@ class ComposerStaticInit0eb6907791f1b336aacf92f8b7b6ad47
             'Webman\\Cors\\' => 12,
             'Webman\\Console\\' => 15,
             'Webman\\' => 7,
+            'WebmanTech\\LaravelHttpClient\\' => 29,
         ),
         'T' => 
         array (
@@ -289,6 +290,10 @@ class ComposerStaticInit0eb6907791f1b336aacf92f8b7b6ad47
         'Webman\\' => 
         array (
             0 => __DIR__ . '/..' . '/workerman/webman-framework/src',
+        ),
+        'WebmanTech\\LaravelHttpClient\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/webman-tech/laravel-http-client/src',
         ),
         'Tymon\\JWTAuth\\' => 
         array (

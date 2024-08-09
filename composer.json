@@ -54,7 +54,8 @@
     "yzh52521/webman-jwt-auth": "^3.0",
     "xpzhu/webman-jwt": "^1.0",
     "paragonie/sodium_compat": "^2.0",
-    "webman/stomp": "^1.1"
+    "webman/stomp": "^1.1",
+    "webman-tech/laravel-http-client": "^1.3"
   },
   "suggest": {
     "ext-event": "For better performance. "

@@ -40,4 +40,11 @@ class TestController
         }
     }
 
+    public function testTransaction(Request $request) {
+        var_dump($request->get());
+        var_dump($request->post());
+        echo 'that response is when the transaction processing finished';
+        return redirect('/thumbsPay');
+    }
+
 }

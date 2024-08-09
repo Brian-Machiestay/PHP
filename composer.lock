@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2f5db698134e726bef4c02581242bf1c",
+    "content-hash": "e7e9b8a7092ec7addd227d68135714b0",
     "packages": [
         {
             "name": "brick/math",
@@ -6272,6 +6272,47 @@
                 }
             ],
             "time": "2022-03-08T17:03:00+00:00"
+        },
+        {
+            "name": "webman-tech/laravel-http-client",
+            "version": "v1.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/webman-tech/laravel-http-client.git",
+                "reference": "21c50735911d7fcaa17f795ee077a6a24e5447cc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/webman-tech/laravel-http-client/zipball/21c50735911d7fcaa17f795ee077a6a24e5447cc",
+                "reference": "21c50735911d7fcaa17f795ee077a6a24e5447cc",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": ">=6.5",
+                "illuminate/http": ">=8.0",
+                "php": ">=7.3"
+            },
+            "require-dev": {
+                "monolog/monolog": "^2.8",
+                "phpunit/phpunit": "^9",
+                "workerman/webman-framework": "^1.4.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "WebmanTech\\LaravelHttpClient\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Webman plugin webman-tech/laravel-http-client",
+            "support": {
+                "issues": "https://github.com/webman-tech/laravel-http-client/issues",
+                "source": "https://github.com/webman-tech/laravel-http-client/tree/v1.3.1"
+            },
+            "time": "2024-04-10T15:23:02+00:00"
         },
         {
             "name": "webman/blade",

@@ -35,7 +35,7 @@ Route::group('/api/v1', function() {
             Route::get('/voters', [app\controller\VoterController::class, 'retrieveVoters']);
             Route::put('/publish', [app\controller\ClientController::class, 'publish']);
             Route::any('/results', [app\controller\VoteController::class, 'results']);
-            Route::get('/sendLink', [app\controller\VoteController::class, 'sendVotingLink']);
+            Route::post('/sendLink', [app\controller\VoteController::class, 'sendVotingLink']);
       })->middleware([
             app\middleware\Auth::class,
         ]);
@@ -45,6 +45,7 @@ Route::group('/api/v1', function() {
       
       Route::get('/test', [app\controller\TestController::class, 'index']);
       Route::get('/testAuth', [app\controller\TestController::class, 'testAuth']);
+      Route::get('/testTransaction', [app\controller\TestController::class, 'testTransaction']);
 
       Route::group('/admin', function() {
             Route::get('/clients', [app\controller\ClientController::class, 'clients']);

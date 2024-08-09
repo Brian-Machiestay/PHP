@@ -12,11 +12,15 @@ import { useSearchParams } from "react-router-dom";
 
 import Axios from "../utils/axiosConfig";
 import $ from 'jquery';
+import { useNavigate } from "react-router-dom";
+
+import toast from "react-hot-toast";
 
 
 
 
 const Vote = () => {
+      const navigate = useNavigate();
       const [searchParams, setSearchParams] = useSearchParams();
       const [fetching, setFetching] = useState(false);
       const nextPortfolio = useSelector((state) => state.vote.nextData);
@@ -24,20 +28,22 @@ const Vote = () => {
       const dispatch = useDispatch();
       const finish_voting = useSelector((state) => state.vote.finish_voting);
       //console.log(nextPortfolio);
-      console.log(voting_data)
-      console.log(searchParams.get('client_id'));
+      //console.log(voting_data)
+      //console.log(searchParams.get('client_id'));
 
       const startVoting = async () => {
             //setInitial(false);
             //console.log('rendered')
-            
+            const toastId = toast.loading('fetching voting data for you')
             try {
-                  const dd = await Axios.get('/14/vote/data');
+                  const dd = await Axios.get(`/${searchParams.get('client_id')}/vote/data`);
                   console.log(dd);
+                  toast.success('Successful, you can start voting', { id: toastId })
                   dispatch(setVotingData(dd['data']));
                   dispatch(setNextVotingData());
             } catch (e) {
                   console.log(e);
+                  toast.error('Failed to fetch voting data', { id: toastId })
             }
       }
 
@@ -59,16 +65,24 @@ const Vote = () => {
       }
 
       const castVote = async () => {
-            
+            const toastId = toast.loading('casting vote');
             try {
                   $('#cast').prop('disabled', true);
                   let data = await Axios.post(`/${searchParams.get('client_id')}/vote?i=${searchParams.get('i')}`, voting_data);
                   $('.voted_info').text('Thankyou for casting your vote');
+                  toast.success('Thankyou for casting your vote', { id: toastId });
                   console.log(data);
+                  const billing = searchParams.get('billing');
+                  if (billing === 'yes') {
+                        console.log('inside the if constrct now logging data')
+                        console.log(data)
+                        window.location.href = data['data']['checkout_url'];
+                  }
             } catch (e) {
                   console.log(e);
                   $('.voted_info').text(e['response']['data']);
                   $('#cast').prop('disabled', false);
+                  toast.error(e['response']['data'], { id: toastId });
             }
 
       }

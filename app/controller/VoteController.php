@@ -14,11 +14,13 @@ use Exception;
 use support\Db;
 use Webman\RedisQueue\Client as RedisClient;
 use Shopwwi\WebmanAuth\Facade\Auth as Authenticate;
+use support\Response;
+use WebmanTech\LaravelHttpClient\Facades\Http;
 
 //use app\queue\redis\Mail;
 class VoteController
 {
-    public function vote(Request $request, int $id)
+    public function vote(Request $request, string $id)
     {
         //echo $id;
         try {
@@ -42,12 +44,7 @@ class VoteController
         if ($voter_id == null) return Response('voter does not exist', 400);
         if ($voter->client != $client) return Response('voter is not allowed in this poll', 400);
         if (!$client->publish) return Response('poll not open yet', 400);
-        /*
-        $data = [
-            'candidate_id' => $request->post('candidate_id'),
-            'portfolio_id' => $request->post('portfolio_id')
-        ];
-        */
+       
         $data = $request->post();
         echo var_dump($data);
         $votes = [];
@@ -73,7 +70,25 @@ class VoteController
             $vote = $portfolio->votes()->create(['candidate_id' => $candidate->id, 'voter_id' => $voter->id]);
                 array_push($votes, $vote);
             }
-
+        if ($voter_data->billing == 'yes') {
+            echo 'we entered here';
+            $payment_data = [
+                'merchant_id' => getenv('MERCHANT_ID'),
+                'transaction_id' => '000000000001',
+                'desc' => 'complete the payment to cast your vote',
+                'amount' => str_pad(strval($voter_data->amount), 12, '0', STR_PAD_LEFT),
+                'redirect_url' => getenv('PAYMENT_REDIRECT_URL'),
+                'email' => getenv('CUSTOMER_EMAIL')
+            ];
+            var_dump($payment_data);
+            $res = Http::withHeaders([
+                "Authorization" => "Basic ".base64_encode(getenv('API_USERNAME'). ':' . getenv('PAYMENT_API_KEY'))
+            ])->post('https://checkout-test.theteller.net/initiate', $payment_data);
+            $res->throw();
+            echo $res;
+            echo 'That response is when the request was sent';
+            return json(['checkout_url' => $res['checkout_url']]);
+        }
         $isSuccessful = Vote::bulkVote($votes);
         if (!$isSuccessful) return Response('sucessful. Thankyou for letting your vote count');
         return Response('Sorry, Voting was not successful, an error occurred', 500);
@@ -103,8 +118,9 @@ class VoteController
 
     public function data (Request $request, $id) {
         //$id = $request->get('id');
+        try {
         $client = Client::getClientWithId((int) $id);
-
+        echo $client;
         $res = ['client_id' => $client->id, 'client_name' => $client->user->name];
         $res['portfolios'] = array();
         foreach($client->portfolios as $pp) {
@@ -117,12 +133,30 @@ class VoteController
             array_push($res['portfolios'], $pp_data);
         }
         return json($res);
+        } catch (Exception $e) {
+            echo $e;
+            return Response('Sorry, an error occurred', 500);
+        }
     }
 
     public function sendVotingLink(Request $request) {
         $usr = Authenticate::user();
+        $billing = $request->post('billing');
+        $amount = $request->post('amount');
+        if ($billing == null || ($billing != 'yes' && $billing != 'no')) return Response('billing parameter must be yes or no', 400);
+        if ($billing == 'yes' && ($amount == null || gettype($amount) != 'integer')) return Response('Billing must be a number greater than zero', 400);
+        
+        /*
+        if ($billing == 'yes') {
+            //billing functionality
+            return Response('Billing has not been implemented yet', 400);
+        }
+        //elseif ($billing != 'no') return Response('billing param')
+        */
+
         $client = $usr->client;
-        Mail::sendVotingLink($client->voters);
+        if ($billing == 'no') Mail::sendVotingLink($client->voters, ['billing' => $billing]);
+        else Mail::sendVotingLink($client->voters, ['billing' => $billing, 'amount' => $amount ]);
         return Response('mail sent successfully');
     }
 

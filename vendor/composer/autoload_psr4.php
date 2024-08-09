@@ -27,6 +27,7 @@ return array(
     'Webman\\Cors\\' => array($vendorDir . '/webman/cors/src'),
     'Webman\\Console\\' => array($vendorDir . '/webman/console/src'),
     'Webman\\' => array($vendorDir . '/workerman/webman-framework/src'),
+    'WebmanTech\\LaravelHttpClient\\' => array($vendorDir . '/webman-tech/laravel-http-client/src'),
     'Tymon\\JWTAuth\\' => array($vendorDir . '/tymon/jwt-auth/src'),
     'Termwind\\' => array($vendorDir . '/nunomaduro/termwind/src'),
     'Symfony\\Polyfill\\Php83\\' => array($vendorDir . '/symfony/polyfill-php83'),

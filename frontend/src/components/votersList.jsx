@@ -10,6 +10,7 @@ import VoterOne from "./reusables/voterOne";
 import toast from "react-hot-toast";
 
 import VoterModal from "./modals/voterModal";
+import VotingLinkModal from "./modals/votingLinkModal";
 
 
 import {useSelector, useDispatch} from 'react-redux'
@@ -27,18 +28,9 @@ const VotersList = (props) => {
     const openVoterModal = () => {
         $('#createVoterModal').modal('show')
     }
-
-    const sendVotingLink = async () => {
-        const toastId = toast.loading('Sending voting link');
-        try {
-            
-            const response = await Axios.get('/sendLink');
-            console.log(response['data']);
-            toast.success('Link sent successfully', { id: toastId });
-        } catch ($e) {
-            console.error($e);
-            toast.error('Error sending link', { id: toastId });
-        }
+    
+    const votingLinkModal = () => {
+        $('#votingLinkModal').modal('show');
     }
 
     useEffect(
@@ -74,7 +66,7 @@ const VotersList = (props) => {
                 <p>Voters</p>
                 
                 <button className={`${styles.addCandidate} ${styles.addVoter}`} onClick={openVoterModal}>add Voter</button>
-                <button className={`${styles.addCandidate} ${styles.sendLink}`} onClick={sendVotingLink}>Send Link</button>
+                <button className={`${styles.addCandidate} ${styles.sendLink}`} onClick={votingLinkModal}>Send Link</button>
             </div>
             <div className={styles.other_sections}>
                 <div className={styles.section2}>
@@ -89,6 +81,7 @@ const VotersList = (props) => {
                 </div>
             </div>
             <VoterModal />
+            <VotingLinkModal />
         </div>
     )
 }

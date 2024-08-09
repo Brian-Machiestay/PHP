@@ -3,7 +3,7 @@
         'name' => 'workerman/webman',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '0c555ceffee3f931e1eb5d9508d5dfd83171da52',
+        'reference' => '7e4e3522a6035972e641a7a46e7931316d8e401f',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -890,6 +890,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'webman-tech/laravel-http-client' => array(
+            'pretty_version' => 'v1.3.1',
+            'version' => '1.3.1.0',
+            'reference' => '21c50735911d7fcaa17f795ee077a6a24e5447cc',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../webman-tech/laravel-http-client',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'webman/blade' => array(
             'pretty_version' => 'v1.5.5',
             'version' => '1.5.5.0',
@@ -992,7 +1001,7 @@
         'workerman/webman' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '0c555ceffee3f931e1eb5d9508d5dfd83171da52',
+            'reference' => '7e4e3522a6035972e641a7a46e7931316d8e401f',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

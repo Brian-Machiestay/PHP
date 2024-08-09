@@ -7,6 +7,7 @@ import Candidates from './pages/candidates';
 import Login from './components/auth/login';
 import Vote from './pages/vote';
 import Notifications from './pages/notifications';
+import ThumbsPay from './pages/thumbsPay';
 
 function App() {
     return (
@@ -18,9 +19,11 @@ function App() {
             <Route path='candidates' element={<Candidates />}></Route>
             <Route path='notifications' element={<Notifications />}></Route>
             <Route path='settings'></Route>
+            
           </Route>
           <Route path='/login' element={<Login />}></Route>
           <Route path='/vote' element={<Vote />}></Route>
+          <Route path='thumbspay' element={<ThumbsPay />}></Route>
         </Routes>
       </BrowserRouter>
     );

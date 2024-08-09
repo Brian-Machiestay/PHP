@@ -6535,6 +6535,50 @@
             "install-path": "../voku/portable-ascii"
         },
         {
+            "name": "webman-tech/laravel-http-client",
+            "version": "v1.3.1",
+            "version_normalized": "1.3.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/webman-tech/laravel-http-client.git",
+                "reference": "21c50735911d7fcaa17f795ee077a6a24e5447cc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/webman-tech/laravel-http-client/zipball/21c50735911d7fcaa17f795ee077a6a24e5447cc",
+                "reference": "21c50735911d7fcaa17f795ee077a6a24e5447cc",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": ">=6.5",
+                "illuminate/http": ">=8.0",
+                "php": ">=7.3"
+            },
+            "require-dev": {
+                "monolog/monolog": "^2.8",
+                "phpunit/phpunit": "^9",
+                "workerman/webman-framework": "^1.4.7"
+            },
+            "time": "2024-04-10T15:23:02+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "WebmanTech\\LaravelHttpClient\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Webman plugin webman-tech/laravel-http-client",
+            "support": {
+                "issues": "https://github.com/webman-tech/laravel-http-client/issues",
+                "source": "https://github.com/webman-tech/laravel-http-client/tree/v1.3.1"
+            },
+            "install-path": "../webman-tech/laravel-http-client"
+        },
+        {
             "name": "webman/blade",
             "version": "v1.5.5",
             "version_normalized": "1.5.5.0",

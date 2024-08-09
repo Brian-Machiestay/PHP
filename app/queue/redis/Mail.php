@@ -41,14 +41,20 @@ class Mail implements Consumer
         //var_dump($data);
     }
    
-    public static function sendVotingLink($voters) {
+    public static function sendVotingLink($voters, array $extra = null) {
         foreach ($voters as $vt) {
             $subject = 'Voting link from ' . $vt->client->user->name;
-            $data = ['email' => $vt->user->email, 'id' => $vt->id, 'client_id' => $vt->client->id, 'subject' => $subject];
+            if ($extra != null) {
+                $data = ['email' => $vt->user->email, 'id' => $vt->id, 'client_id' => $vt->client->id, 'subject' => $subject] + $extra;
+            }
             $msg = '<p>Hi ' . $vt->user->name . '</p> <p>A poll has been opened by ' . $vt->client->user->name . ' and you are a voter in that poll.</p> <p>Click on the button below to cast your vote</p>';
+            
+            //echo var_dump($data);
             $jwt = new JwtClaims();
-            $jwt = $jwt->getJwt($data, 300);
+            $jwt = $jwt->getJwt($data, 600);
             $link = getenv('THUMBS_VOTING_DOMAIN') . '/vote?i=' . $jwt . '&client_id=' . $vt->client->id;
+            if ($extra != null) $link = getenv('THUMBS_VOTING_DOMAIN') . '/vote?i=' . $jwt . '&client_id=' . $vt->client->id . '&billing=' . $extra['billing'];
+            echo $link;
             $msg .= '<button style="background-color: green; outline: none; border: none; border-radius: 5px; margin-left: 40%; padding: 10px"><a style="color: white; text-decoration: none; font-weight: bold" href="' . $link . '">Vote Here</button>';
             $msg .= '<p>NOTE: <span style="color: violet">the link is personalized and so sharing it would impact your chance</span></p>';
             $msg .= 'THUMBS 🗳️';
